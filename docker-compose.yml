@@ -40,3 +40,8 @@ services:
             - mysql
         ports:
             - 8080:80
+
+    mailcatcher:
+        image: schickling/mailcatcher
+        ports:
+            - 1080:1080
