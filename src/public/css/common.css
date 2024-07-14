@@ -1,0 +1,118 @@
+.body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.header {
+    background-color: #fff;
+}
+
+.header__inner {
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.header__logo {
+    width: 100%;
+    display: inline-block;
+    margin-right: 20px;
+    /* position: relative; */
+    vertical-align: top;
+}
+
+.header__logo-rese::after{
+    content:"Rese";
+    font-size: 32px;
+    color: #305dff;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+
+
+.modal__button{
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px #808080;
+    background-color: #305dff;
+}
+
+.modal__button-open{
+    padding: 8px;
+    line-height: 0.5;
+    letter-spacing: -3px;
+}
+
+.modal__button-close{
+    text-align: center;
+    padding: 3px;
+    font-size: 24px;
+    font-weight: 100;
+}
+
+
+.modal__overlay {
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    top: 0%;
+    left: 0%;
+    z-index: 1;
+    display: none;
+    background-color: #fff;
+}
+
+.modal__content{
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.modal__menu{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.modal__menu-button{
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modal__menu-button a,
+.modal__menu-button button{
+    font-size: 24px;
+    color: #305dff;
+}
+.modal__menu-button a{
+    text-decoration: none;
+    font-weight: 400;
+}
+.modal__menu-button button{
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.modal__check-open,
+.modal__check-close{
+    display: none;
+}
+
+.modal__check-open:checked + div.modal__overlay
+{
+    display: block;
+}
+
+
+.modal__check-open:checked + label.modal__button-open{
+    display: none;
+}
+.modal__check-close:checked + div.modal__overlay {
+    display: none;
+}

@@ -1,0 +1,165 @@
+.mypage-wrapper{
+    max-width: 1230px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.mypage-name{
+    text-align: center;
+    font-size: 24px;
+}
+
+.mypage-content{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.reservation-status{
+    width: 35%;
+}
+
+.reservation-status__header,
+.favorite-content__header {
+    text-align: left;
+    font-size: 20px;
+}
+
+.reservation-status__detail{
+    background-color: #305dff;
+    border: none;
+    border-radius: 5px;
+    padding: 30px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.reservation-status__detail-header{
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.reservation-status__detail-num img{
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+}
+.reservation-status__detail-num span {
+    color: #fff;
+
+}
+
+.reservation-status__button{
+    display: flex;
+    justify-content: space-around;
+}
+
+.reservation-status__change-submit{
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background-color: #305dff;
+    color: #fff;
+    margin-right: 5px;
+}
+
+.reservation-status__detail-delete button {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: #305dff;
+    color: #fff;
+}
+
+.reservation-content__result tr{
+    line-height: 35px;
+}
+
+.reservation-content__result th,
+.reservation-content__result td{
+    text-align: left;
+    color: #fff;
+    width: 100px;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+
+.favorite-content{
+    width: 54%;
+}
+
+.shop-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shop-info {
+    width: 45%;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px #808080;
+    margin-bottom: 20px;
+}
+
+.shop-info:not(:nth-child(2n)) {
+    margin-right: 10%;
+}
+
+.shop-info__img {
+    width: 100%;
+}
+
+.shop-info__img img {
+    width: 100%;
+    height: 135px;
+    border-radius: 5px 5px 0 0;
+    object-fit: cover;
+}
+
+.shop-info__detail {
+    text-align: left;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 0 0 5px 5px;
+}
+
+.shop-info__detail h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.shop-info__detail p {
+    margin: 0;
+    margin-bottom: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.shop-info__button {
+    display: flex;
+    justify-content: space-between;
+}
+
+.shop-info__button--detail button {
+    background-color: #305dff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 7px 15px;
+    cursor: pointer;
+}
+
+.shop-info__button--fav button {
+    border: none;
+    background-color: #fff;
+    width: 38px;
+    height: 30px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.shop-info__button--fav button img {
+    width: 100%;
+    height: 100%;
+}

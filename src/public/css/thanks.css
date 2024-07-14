@@ -1,0 +1,27 @@
+body,
+.header {
+    background-color: #eeeeee;
+}
+
+.thanks-content{
+    max-width: 450px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 100px 50px;
+    box-shadow: 2px 1px 3px #808080;
+}
+
+.thanks-content__message{
+    font-size: 24px;
+    margin-bottom: 50px;
+}
+
+.thanks-content__button a{
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: #305dff;
+    color: #fff;
+    padding: 5px 15px;
+}
