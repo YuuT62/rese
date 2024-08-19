@@ -2,8 +2,6 @@
     max-width: 1230px;
     margin: 0 auto;
     text-align: center;
-    /* position: relative; */
-
 }
 
 .detail-content{
@@ -33,11 +31,6 @@
     font-size: 16px;
     margin-bottom: 20px;
 }
-
-
-
-
-
 
 .reservation-content {
     position: absolute;
@@ -80,7 +73,6 @@
     width: 100%;
     border-radius: 3px;
     padding: 3px 5px;
-    margin-bottom: 15px;
     border: none;
     outline: none;
     cursor: pointer;
@@ -96,7 +88,7 @@
 
 .reservation-content__calender-icon {
     position: absolute;
-    top: 30%;
+    top: 45%;
     left: 80%;
     transform: translate(0%, -50%);
     width: 10px;
@@ -109,7 +101,6 @@
     width: 100%;
     border-radius: 3px;
     padding: 3px 5px;
-    margin-bottom: 15px;
     border: none;
     outline: none;
     appearance: none;
@@ -118,12 +109,22 @@
 
 .reservation-content__select-icon {
     position: absolute;
-    top: 35%;
+    top: 45%;
     left: 95%;
     transform: translate(0%, -50%);
     width: 10px;
     height: 8px;
     pointer-events: none;
+}
+
+
+.reservation-content__error {
+    color: #ff0000;
+    font-size: 14px;
+    margin: 0;
+    height: 20px;
+    margin-left: 20px;
+    margin-bottom: 5px;
 }
 
 
@@ -158,7 +159,7 @@
     width: 40%;
 }
 
-.reservation-content__button button{
+.reservation-content__button-submit{
     cursor: pointer;
     border: none;
     border-radius: 0 0 5px 5px;
@@ -168,28 +169,59 @@
     padding: 15px;
 }
 
-.title-fw {
-    padding: 5px;
-}
+/* レスポンシブデザイン */
+@media screen and (max-width: 768px) {
+    .detail-content {
+        margin: 0 auto;
+        width: 70%;
+    }
 
-.title {
-    display: inline-block;
-    color: #fff;
-    background-color: gray;
-    border-radius: 10px;
-    padding: 3px 8px;
-    text-align: center;
-    margin: 5px 20px 5px 0;
-}
+    .detail-content__shop-name{
+        font-size: 3vw;
+    }
 
-table {
-    width: 30%;
-}
+    .detail-content__shop-img img{
+        margin-bottom: 3%;
+    }
 
-td {
-    width: 100px;
-}
+    .detail-content__shop-tag,
+    .detail-content__shop-introduction{
+        font-size: 2vw;
+        margin: 3% 0;
+    }
 
-.text-change {
-    padding: 3px 8px;
+    .detail-content__back{
+        font-size: 2vw;
+    }
+
+    .reservation-content{
+        position: unset;
+        margin: 0 auto;
+        width: 70%;
+        padding-top: 5px;
+    }
+
+    .reservation-content__header{
+        font-size: 2vw;
+    }
+
+    .reservation-content__calender-icon,
+    .reservation-content__select-icon{
+        top: 50%;
+    }
+
+    .reservation-content__table-wrapper{
+        margin-bottom: 50px;
+    }
+
+    .reservation-content__date,
+    .reservation-content__time,
+    .reservation-content__num{
+        margin-bottom: 3px;
+    }
+
+    .reservation-content__error{
+        height: 3vw;
+        font-size: 2vw;
+    }
 }

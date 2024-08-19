@@ -1,52 +1,11 @@
-.detail-wrapper {
-    max-width: 1230px;
-    margin: 0 auto;
-    text-align: center;
-    /* position: relative; */
-
-}
-
-.detail-content {
-    text-align: left;
-    padding: 0 30px;
-    width: 50%;
-}
-
-.detail-content__back {
-    text-decoration: none;
-    color: #000;
-    border-radius: 5px;
-    box-shadow: 1px 1px 3px #808080;
-    font-size: 16px;
-    padding: 2px 7px;
-    vertical-align: middle;
-    margin-right: 5px;
-}
-
-.detail-content__shop-img img {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.detail-content__shop-tag,
-.detail-content__shop-introduction {
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
-
-
-
-
-
 .evaluation-content {
     position: absolute;
     top: 3%;
     left: 55%;
     background-color: #305dff;
     border-radius: 5px;
-    width: 35%;
-    max-width: 500px;
+    width: 40%;
+    max-width: 400px;
     text-align: left;
 }
 
@@ -66,13 +25,8 @@
 }
 
 .evaluation-content__grade-title{
-    width: 100px;
-}
-
-.evaluation-content__grade {
-    width: 50%;
-    max-width: 150px;
-    display: flex;
+    width: 70px;
+    color: #fff;
 }
 
 .evaluation-content__grade-label{
@@ -106,25 +60,7 @@
     outline: none;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.evaluation-content__button button {
+.evaluation-content__button-submit {
     cursor: pointer;
     border: none;
     border-radius: 0 0 5px 5px;
@@ -132,5 +68,43 @@
     background-color: #0738ff;
     width: 100%;
     padding: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .evaluation-content {
+        position: unset;
+        margin: 0 auto;
+        width: 70%;
+        padding-top: 5px;
+    }
+
+    .evaluation-content__header{
+        font-size: clamp(12px, 3vw, 20px);
+        margin: 10px 20px 10px;
+    }
+
+    .evaluation-content__table{
+        margin: 10px 20px 10px;
+    }
+    .evaluation-content__grade-title{
+        font-size: clamp(12px, 2.5vw, 16px);
+        width: 20vw;
+    }
+
+    .evaluation-content__grade-icon--on,
+    .evaluation-content__grade-icon--off{
+        max-width: 30px;
+        max-height: 30px;
+        width: 5vw;
+        height: 5vw;
+    }
+
+    .evaluation-content__comment{
+        margin-bottom: 2vw;
+    }
+
+    .evaluation-content__button-submit{
+        font-size: clamp(12px, 2.5vw, 16px);
+    }
 }
 

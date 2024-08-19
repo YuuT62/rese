@@ -12,7 +12,18 @@ class Evaluation extends Model
     protected $fillable =[
         'user_id',
         'shop_id',
-        'score',
-        '',
+        'evaluation_general',
+        'evaluation_meal',
+        'evaluation_service',
+        'evaluation_atmosphere',
+        'comment',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function shop(){
+        return $this->belongsTo(Shop::class);
+    }
 }

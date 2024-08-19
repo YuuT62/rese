@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Cashier\Billable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Billable;
 
     /**
      * The attributes that are mass assignable.
@@ -18,6 +19,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'role_id',
         'name',
         'email',
         'password',
@@ -50,9 +52,20 @@ class User extends Authenticatable
         return $this->hasMany(Favorite::class);
     }
 
-    public function scopeUserSearch($query, $user_id){
-        if(!empty($id)){
-            $query->where('id', $user_id);
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
+
+    public function scopeRoleSearch($query, $role_id){
+        if (!empty($role_id)) {
+        $query->where('role_id', $role_id);
         }
     }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new \App\Notifications\VerifyEmailJapanese);
+    }
 }
+
+

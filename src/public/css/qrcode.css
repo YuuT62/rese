@@ -1,0 +1,45 @@
+body,
+.header {
+    background-color: #eeeeee;
+}
+
+.qrcode-content {
+    max-width: 450px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 100px 50px;
+    box-shadow: 2px 1px 3px #808080;
+}
+
+.qrcode-content__message {
+    font-size: 24px;
+    margin-bottom: 50px;
+}
+
+.qrcode-content__button a {
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: #305dff;
+    color: #fff;
+    padding: 5px 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .qrcode-content {
+        width: 60vw;
+        min-width: 250px;
+        padding: 12vw 8vw;
+    }
+
+    .qrcode-content__message {
+        font-size: clamp(12px, 3vw, 24px);
+        margin-bottom: 5vw;
+    }
+
+    .qrcode-content__button a {
+        font-size: clamp(8px, 2vw, 16px);
+        padding: 2% 5%;
+    }
+}

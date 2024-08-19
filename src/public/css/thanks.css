@@ -25,3 +25,21 @@ body,
     color: #fff;
     padding: 5px 15px;
 }
+
+@media screen and (max-width: 768px) {
+    .thanks-content {
+        width: 60vw;
+        min-width: 250px;
+        padding: 12vw 8vw;
+    }
+
+    .thanks-content__message {
+        font-size: clamp(12px, 3vw, 24px);
+        margin-bottom: 5vw;
+    }
+
+    .thanks-content__button a {
+        font-size: clamp(8px, 2vw, 16px);
+        padding: 2% 5%;
+    }
+}

@@ -16,11 +16,10 @@
     width: 100%;
     display: inline-block;
     margin-right: 20px;
-    /* position: relative; */
     vertical-align: top;
 }
 
-.header__logo-rese::after{
+.header__logo--rese::after{
     content:"Rese";
     font-size: 32px;
     color: #305dff;
@@ -42,13 +41,13 @@
     background-color: #305dff;
 }
 
-.modal__button-open{
+.modal__button--open{
     padding: 8px;
     line-height: 0.5;
     letter-spacing: -3px;
 }
 
-.modal__button-close{
+.modal__button--close{
     text-align: center;
     padding: 3px;
     font-size: 24px;
@@ -89,30 +88,76 @@
     font-size: 24px;
     color: #305dff;
 }
-.modal__menu-button a{
+
+.modal__menu-button a {
     text-decoration: none;
     font-weight: 400;
 }
+
 .modal__menu-button button{
     background-color: #fff;
     border: none;
     cursor: pointer;
 }
 
-.modal__check-open,
-.modal__check-close{
+.modal__check--open,
+.modal__check--close{
     display: none;
 }
 
-.modal__check-open:checked + div.modal__overlay
+.modal__check--open:checked + div.modal__overlay
 {
     display: block;
 }
 
 
-.modal__check-open:checked + label.modal__button-open{
+.modal__check--open:checked + label.modal__button--open{
     display: none;
 }
-.modal__check-close:checked + div.modal__overlay {
+.modal__check--close:checked + div.modal__overlay {
     display: none;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .header__inner {
+        max-width: 768px;
+        padding-bottom: 5px;
+        }
+
+    .header__logo {
+        margin-right: 0;
+    }
+
+    .modal__button {
+        width: 5vw;
+        height: 5vw;
+        font-size: 1.7vw;
+        vertical-align: top;
+        padding-top: 1vw;
+    }
+
+    .header__logo--rese::after {
+        font-size: 4vw;
+        margin-left: 3%;
+    }
+
+    .modal__overlay{
+        height: 50vw;
+    }
+
+    .modal__menu{
+        margin-top: 3vw;
+    }
+
+    .modal__menu-button{
+        margin-bottom: 2vw;
+        height: 3vw;
+    }
+
+    .modal__menu-button a,
+    .modal__menu-button button{
+        font-size: clamp(8px, 3vw, 24px);
+    }
 }

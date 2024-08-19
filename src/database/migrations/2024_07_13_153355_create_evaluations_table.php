@@ -17,8 +17,11 @@ class CreateEvaluationsTable extends Migration
             $table->id();
             $table->foreignID('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('shop_id')->constrained()->cascadeOnDelete();
-            $table->integer('grade')->nullable();
-            $table->text('comment');
+            $table->integer('evaluation_general')->nullable();
+            $table->integer('evaluation_meal')->nullable();
+            $table->integer('evaluation_service')->nullable();
+            $table->integer('evaluation_atmosphere')->nullable();
+            $table->string('comment');
             $table->timestamps();
         });
     }

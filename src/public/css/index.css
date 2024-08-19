@@ -3,71 +3,6 @@ body,
     background-color: #eeeeee;
 }
 
-.header__inner{
-    display: flex;
-}
-
-.search-box{
-    display: flex;
-    width: 100%;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 2px 2px 3px #808080;
-}
-
-.search-box__area,
-.search-box__genre,
-.search-box__search{
-    position: relative;
-}
-.search-box__area,
-.search-box__genre{
-    width: 18%;
-    min-width: 100px;
-}
-
-.search-box__area select,
-.search-box__genre select,
-.search-box__search input{
-    border: none;
-    outline: none;
-    background-color: transparent;
-    padding: 5px 10px;
-    appearance: none;
-    font-weight: bold;
-    width: 100%;
-    font-size: 12px;
-}
-
-.search-box__area select,
-.search-box__genre select{
-    border-right: 2px solid #eeeeee;
-}
-
-.search-box__search input{
-    padding-left: 40px;
-}
-
-.search-box__select-icon{
-    position: absolute;
-    top:50%;
-    left: 75%;
-    transform: translate(0%,-50%);
-    width: 13px;
-    height: 10px;
-    pointer-events: none;
-}
-
-.search-box__search-icon{
-    position: absolute;
-    top: 50%;
-    left: 3%;
-    transform: translate(0%, -50%);
-    width: 20px;
-    height: 15px;
-}
-
 .shop-content{
     max-width: 1230px;
     margin: 0 auto;
@@ -114,11 +49,11 @@ body,
     font-weight: bold;
 }
 
-.shop-info__button{
+.shop-info__buttons{
     display: flex;
     justify-content: space-between;
 }
-.shop-info__button--detail button{
+.shop-info__button button{
     background-color: #305dff;
     border: none;
     border-radius: 5px;
@@ -138,4 +73,40 @@ body,
 .shop-info__button--fav button img{
     width: 100%;
     height: 100%;
+}
+
+
+/* レスポンシブデザイン */
+@media screen and (max-width: 768px) {
+    .shop-content {
+            max-width: 600px;
+        }
+
+    .shop-info {
+        width: 48%;
+    }
+
+    .shop-info:nth-child(2n-1) {
+        margin-right: 2%;
+    }
+
+
+    .shop-info__detail h2 {
+        font-size: 2.5vw;
+    }
+
+    .shop-info__detail p {
+        font-size: 1.6vw;
+        margin-bottom: 10px;
+    }
+
+    .shop-info__button button{
+        font-size: 1.5vw;
+        padding: 5px 12px;
+    }
+
+    .shop-info__button--fav button{
+        width: 5vw;
+        height: auto;
+    }
 }

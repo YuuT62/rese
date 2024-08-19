@@ -75,9 +75,57 @@ body,
 .register-form__error{
     color: red;
     margin: 0 auto;
-    height: 15px;
+    height: 30px;
     text-align: left;
     margin-bottom: 5px;
     font-size: 12px;
     padding-left: 70px;
+}
+
+
+
+/* レスポンシブデザイン */
+@media screen and (max-width: 768px) {
+    .register-form {
+        width: 45vw;
+        min-width: 200px;
+    }
+
+    .register-form__header {
+        font-size: clamp(8px, 2vw, 16px);
+        padding: 5%;
+        margin-bottom: 5%;
+    }
+
+    .register-form__email-icon {
+        width: 5%;
+        height: 5%;
+        margin-right: 1%;
+    }
+
+    .register-form__name-icon,
+    .register-form__password-icon {
+        width: 5%;
+        height: 5%;
+        margin-right: 1%;
+    }
+
+    .register-form__name input,
+    .register-form__email input,
+    .register-form__password input {
+        font-size: clamp(8px, 2vw, 16px);
+        padding: 1%;
+        margin-bottom: 1%;
+    }
+
+    .register-form__error {
+        height: 5vw;
+        font-size: clamp(8px, 1.5vw, 16px);
+        margin-bottom: 2%;
+        padding-left: 20%;
+    }
+
+    .register-form__button button {
+        font-size: clamp(8px, 1.5vw, 16px);
+    }
 }

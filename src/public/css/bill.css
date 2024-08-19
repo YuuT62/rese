@@ -1,0 +1,39 @@
+.bill-wrapper {
+    max-width: 1230px;
+    margin: 0 auto;
+}
+
+.bill__body {
+    margin: 0 auto;
+    background-color: #305dff;
+    border-radius: 5px;
+    max-width: 400px;
+    text-align: left;
+    color: #fff;
+}
+
+.bill__header {
+    padding: 15px 15px 0;
+    font-size: 18px;
+}
+
+.bill__amount{
+    border-radius: 5px;
+    padding: 12px;
+    border: 1px solid rgba(50, 50, 93, 0.1);
+    height: 44px;
+    width: 90%;
+    background: white;
+    margin: 0 15px 20px;
+}
+
+
+.bill__button-submit{
+    cursor: pointer;
+    border: none;
+    border-radius: 0 0 5px 5px;
+    color: #fff;
+    background-color: #0738ff;
+    width: 100%;
+    padding: 15px;
+}

@@ -12,7 +12,7 @@
             Login
         </div>
         <div class="login-form__email">
-            <img class="login-form__email-icon" src="{{ asset('icon/mail_icon.png') }}" alt="mail_icon">
+            <img class="login-form__email-icon" src="{{ asset('storage/icon/mail_icon.png') }}" alt="mail_icon">
             <input type="text" name="email" value="{{ old('email') }}" placeholder="Email">
         </div>
         <div class="login-form__error">
@@ -23,7 +23,7 @@
         </div>
 
         <div class="login-form__password">
-            <img class="login-form__password-icon" src="{{ asset('icon/password_icon.png') }}" alt="mail_icon">
+            <img class="login-form__password-icon" src="{{ asset('storage/icon/password_icon.png') }}" alt="mail_icon">
             <input type="password" name="password" placeholder="Password">
         </div>
         <div class="login-form__error">

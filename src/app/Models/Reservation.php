@@ -14,6 +14,8 @@ class Reservation extends Model
         'shop_id',
         'reservation',
         'num_people',
+        'visit_status',
+        'evaluation_status'
     ];
 
     public function user(){
@@ -30,9 +32,21 @@ class Reservation extends Model
         }
     }
 
-    public function scopeReservationSearch($query, $reservation_id){
-        if(!empty($reservation_id)){
-            $query->where('id', $reservation_id);
+    // public function scopeReservationSearch($query, $reservation_id){
+    //     if(!empty($reservation_id)){
+    //         $query->where('id', $reservation_id);
+    //     }
+    // }
+
+    public function scopeShopSearch($query, $shop_id){
+        if(!empty($shop_id)){
+            $query->where('shop_id', $shop_id);
+        }
+    }
+
+    public function scopeDateSearch($query, $date){
+        if (!empty($date)) {
+        $query->where('reservation', 'like', '%' . $date . '%');
         }
     }
 }

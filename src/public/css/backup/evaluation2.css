@@ -1,0 +1,141 @@
+.detail-wrapper {
+    max-width: 1230px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.detail-content {
+    text-align: left;
+    padding: 0 30px;
+    width: 50%;
+}
+
+.detail-content__back {
+    text-decoration: none;
+    color: #000;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px #808080;
+    font-size: 16px;
+    padding: 2px 7px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.detail-content__shop-img img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.detail-content__shop-tag,
+.detail-content__shop-introduction {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+.evaluation-content {
+    position: absolute;
+    top: 3%;
+    left: 55%;
+    background-color: #305dff;
+    border-radius: 5px;
+    width: 35%;
+    max-width: 400px;
+    text-align: left;
+}
+
+.evaluation-content__header {
+    color: #fff;
+    font-size: 20px;
+}
+
+
+.evaluation-content__header {
+    margin: 20px;
+}
+
+
+.evaluation-content__table{
+    margin: 20px;
+}
+
+.evaluation-content__grade-title{
+    width: 30%;
+}
+
+.evaluation-content__grade-icon{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.evaluation-content__grade-input{
+    display: none;
+}
+
+
+.evaluation-content__table-grade {
+    position: relative;
+}
+
+.evaluation-content__grade-wrapper {
+    display: none;
+    position: absolute;
+    top: 1%;
+    left: 1%;
+
+}
+
+.evaluation-content__grade-flex {
+    display: flex;
+}
+
+.evaluation-content__grade-label--on{
+    margin-right: 5px;
+}
+
+.grade-1:checked+div.grade-on-1,
+.grade-2:checked+div.grade-on-2,
+.grade-3:checked+div.grade-on-3,
+.grade-4:checked+div.grade-on-4,
+.grade-5:checked+div.grade-on-5 {
+    display: block;
+}
+
+
+.evaluation-content__grade-label--off{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    margin-right: 10px;
+}
+
+
+.evaluation-content__comment{
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 100px;
+}
+.evaluation-content__comment-input{
+    width: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+}
+
+.evaluation-content__button button {
+    cursor: pointer;
+    border: none;
+    border-radius: 0 0 5px 5px;
+    color: #fff;
+    background-color: #0738ff;
+    width: 100%;
+    padding: 15px;
+}
+
+
+

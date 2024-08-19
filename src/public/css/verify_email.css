@@ -1,0 +1,127 @@
+.verify-content {
+    max-width: 1230px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.verify-content__header {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.verify-content__body {
+    width: 60%;
+    margin: 0 auto;
+    border: 2px solid #EAEFEF;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.verify-content__body p {
+    text-align: left;
+    font-size: 18px;
+    width: 70%;
+    margin: 30px auto 20px;
+    line-height: 2em;
+}
+
+.verify-content span {
+    color: red;
+}
+
+.verify-content__form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.verify-content__form button {
+    border: none;
+    border-radius: 5px;
+    background-color: #224ce0;
+    color: #fff;
+    padding: 15px;
+    width: 30%;
+    margin-bottom: 40px;
+}
+
+.header__button {
+    display: none;
+}
+
+
+
+@keyframes fadeOut {
+    0% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    10% {
+        opacity: 1;
+        z-index: 1;
+    }
+
+    90% {
+        opacity: 1;
+        z-index: 1;
+    }
+
+    99% {
+        opacity: 0;
+        z-index: 1;
+
+    }
+
+    100% {
+        z-index: 0;
+    }
+}
+
+.verify-content__alert {
+    margin: 0 auto 20px;
+    width: 50%;
+    height: 50px;
+}
+
+.verify-content__alert-success {
+    width: 100%;
+    border: 2px solid #61FFB2;
+    padding: 10px;
+    text-align: center;
+    background-color: #A7FFB2;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    animation: fadeOut 10s;
+    opacity: 0;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 768px) {
+    .verify-content__header{
+        font-size: clamp(16px, 3vw, 24px);
+    }
+    .verify-content__body{
+        padding: 2vw;
+    }
+
+    .verify-content__body p {
+        font-size: clamp(12px, 3vw, 18px);
+        line-height: 5vw;
+    }
+    .verify-content__form button{
+        font-size: clamp(10px, 2vw, 12px);
+        width: 20vw;
+        max-width: 100px;
+        padding: 2vw;
+    }
+    .verify-content__alert-success{
+        font-size: clamp(12px, 3vw, 20px);
+        padding: 2vw;
+    }
+}

@@ -23,12 +23,6 @@ class Favorite extends Model
         return $this->belongsTo(Shop::class);
     }
 
-    public function scopeFavoriteSearch($query, $id){
-        if(!empty($id)){
-            $query->where('id', $id);
-        }
-    }
-
     public function scopeUserSearch($query, $user_id){
         if(!empty($user_id)){
             $query->where('user_id', $user_id);
