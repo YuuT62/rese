@@ -70,7 +70,7 @@
 
 ##テーブル設計
 
-![reseトップ画面](https://github.com/user-attachments/assets/46639648-ebf3-4f61-bb92-26b17779bcdc)
+![rese-table](https://github.com/user-attachments/assets/54033785-d7a9-42ac-9a4c-186371881f75)
 
 ##ER図
 
