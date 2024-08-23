@@ -32,12 +32,6 @@ class Reservation extends Model
         }
     }
 
-    // public function scopeReservationSearch($query, $reservation_id){
-    //     if(!empty($reservation_id)){
-    //         $query->where('id', $reservation_id);
-    //     }
-    // }
-
     public function scopeShopSearch($query, $shop_id){
         if(!empty($shop_id)){
             $query->where('shop_id', $shop_id);

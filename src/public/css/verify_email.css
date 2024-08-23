@@ -4,7 +4,6 @@
     text-align: center;
 }
 
-
 .verify-content__header {
     width: 80%;
     margin: 0 auto;
@@ -53,8 +52,6 @@
     display: none;
 }
 
-
-
 @keyframes fadeOut {
     0% {
         opacity: 0;
@@ -74,7 +71,6 @@
     99% {
         opacity: 0;
         z-index: 1;
-
     }
 
     100% {
@@ -114,12 +110,14 @@
         font-size: clamp(12px, 3vw, 18px);
         line-height: 5vw;
     }
+
     .verify-content__form button{
         font-size: clamp(10px, 2vw, 12px);
         width: 20vw;
         max-width: 100px;
         padding: 2vw;
     }
+
     .verify-content__alert-success{
         font-size: clamp(12px, 3vw, 20px);
         padding: 2vw;

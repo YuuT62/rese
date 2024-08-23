@@ -28,8 +28,6 @@
     margin-left: 15px;
 }
 
-
-
 .modal__button{
     color: #fff;
     cursor: pointer;
@@ -54,14 +52,13 @@
     font-weight: 100;
 }
 
-
 .modal__overlay {
     position: absolute;
     width: 100%;
     height: 500px;
     top: 0%;
     left: 0%;
-    z-index: 1;
+    z-index: 10;
     display: none;
     background-color: #fff;
 }
@@ -110,15 +107,12 @@
     display: block;
 }
 
-
 .modal__check--open:checked + label.modal__button--open{
     display: none;
 }
 .modal__check--close:checked + div.modal__overlay {
     display: none;
 }
-
-
 
 @media screen and (max-width: 768px) {
     .header__inner {

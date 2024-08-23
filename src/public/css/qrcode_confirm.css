@@ -25,7 +25,7 @@
     top: 0;
     left: 50%;
     transform: translate(-50%, 0);
-    z-index: 50;
+    z-index: 2;
 }
 
 .qr-form__rect {
@@ -33,5 +33,11 @@
     top: 0;
     left: 50%;
     transform: translate(-50%, 0);
-    z-index: 100;
+    z-index: 3;
+}
+
+@media screen and (max-width: 768px) {
+    .qr-form__text{
+        font-size: clamp(12px, 2.5vw, 16px);
+    }
 }

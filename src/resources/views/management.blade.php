@@ -11,7 +11,7 @@
         <button class="management-header__button-submit" type="submit">代表者作成</button>
     </form>
     <form class="management-header__button" action="/email" method="get">
-        <button class="management-header__button-submit" type="submit">メール作成</button>
+        <button class="management-header__button-submit" type="submit">メール</button>
     </form>
     @endcan
     @can('representative')
@@ -20,7 +20,7 @@
         <button class="management-header__button-submit" type="submit">店舗作成</button>
     </form>
     <form class="management-header__button" action="/reservation/confirm" method="get">
-        <button class="management-header__button-submit" type="submit">QR読み取り</button>
+        <button class="management-header__button-submit" type="submit">QR読取</button>
     </form>
     <form class="management-header__button" action="/bill" method="get">
         <button class="management-header__button-submit" type="submit">請求</button>

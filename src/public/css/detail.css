@@ -48,10 +48,10 @@
     font-size: 20px;
 }
 
-
 .reservation-content__header{
     margin: 20px;
 }
+
 .reservation-content__date,
 .reservation-content__time,
 .reservation-content__num,
@@ -117,7 +117,6 @@
     pointer-events: none;
 }
 
-
 .reservation-content__error {
     color: #ff0000;
     font-size: 14px;
@@ -126,8 +125,6 @@
     margin-left: 20px;
     margin-bottom: 5px;
 }
-
-
 
 .reservation-content__table-wrapper{
     background-color: #4d7fff;
@@ -140,6 +137,7 @@
 .reservation-content__table{
     width: 100%;
 }
+
 .reservation-content__result tr {
     line-height: 30px;
     width: 100%;
@@ -155,6 +153,7 @@
 .reservation-content__result th{
     width: 20%;
 }
+
 .reservation-content__result td{
     width: 40%;
 }

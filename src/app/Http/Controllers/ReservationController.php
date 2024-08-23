@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Reservation;
-use App\Models\Favorite;
 use App\Models\Shop;
 use App\Models\Evaluation;
 use Illuminate\Support\Facades\Auth;
@@ -13,14 +11,14 @@ use App\Http\Requests\ReservationInputRequest;
 use App\Http\Requests\ReservationResultRequest;
 use DateTime;
 
-
 class ReservationController extends Controller
 {
+// 新規予約
     public function add(ReservationResultRequest $request){
         $reservation=new DateTime($request['reservation']);
-        $num=$request['num-result'];
+        $num=$request['num_result'];
         $user_id=Auth::id();
-        $shop_id=$request['shop-id'];
+        $shop_id=$request['shop_id'];
         Reservation::create([
                 "user_id" => $user_id,
                 "shop_id" => $shop_id,
@@ -32,18 +30,20 @@ class ReservationController extends Controller
         return view('done');
     }
 
+// 予約削除
     public function delete(Request $request){
-        Reservation::find($request['reservation-id'])->delete();
+        Reservation::find($request['reservation_id'])->delete();
         return redirect('/mypage');
     }
 
+// 予約完了ページ表示
     public function done(){
         return view('done');
     }
 
-
+// 予約内容修正
     public function edit(ReservationInputRequest $request){
-        $reservation_id=$request['reservation-id'];
+        $reservation_id=$request['reservation_id'];
         $reservation=Reservation::find($reservation_id);
         $shop_id=$reservation->shop_id;
         $shop=Shop::find($shop_id);
@@ -55,13 +55,13 @@ class ReservationController extends Controller
     }
 
     public function update(ReservationResultRequest $request){
-        $date=explode(' ',$request['date-result'])[0];
-        $time=$request['time-result'];
+        $date=explode(' ',$request['date_result'])[0];
+        $time=$request['time_result'];
         $reservation=new DateTime($date.' '.$time.':00');
-        $num=$request['num-result'];
+        $num=$request['num_result'];
         $user_id=Auth::id();
-        $reservation_id=$request['reservation-id'];
-        $shop_id=$request['shop-id'];
+        $reservation_id=$request['reservation_id'];
+        $shop_id=$request['shop_id'];
         Reservation::find($reservation_id)->update([
                 "user_id" => $user_id,
                 "shop_id" => $shop_id,
@@ -71,9 +71,9 @@ class ReservationController extends Controller
         return view('done');
     }
 
-
+// 評価
     public function evaluation(Request $request){
-        $reservation_id=$request['reservation-id'];
+        $reservation_id=$request['reservation_id'];
         $reservation=Reservation::find($reservation_id);
         $shop_id=$reservation->shop_id;
         $shop=Shop::find($shop_id);
@@ -84,14 +84,14 @@ class ReservationController extends Controller
     public function evaluationAdd(Request $request){
         Evaluation::create([
             'user_id' => Auth::id(),
-            'shop_id' => $request['shop-id'],
-            'evaluation_general' => $request['grade-result-general'],
-            'evaluation_meal' => $request['grade-result-meal'],
-            'evaluation_service' => $request['grade-result-service'],
-            'evaluation_atmosphere' => $request['grade-result-atmosphere'],
-            'comment' => $request['comment-result'],
+            'shop_id' => $request['shop_id'],
+            'evaluation_general' => $request['grade_result_general'],
+            'evaluation_meal' => $request['grade_result_meal'],
+            'evaluation_service' => $request['grade_result_service'],
+            'evaluation_atmosphere' => $request['grade_result_atmosphere'],
+            'comment' => $request['comment_result'],
         ]);
-        Reservation::find($request['reservation-id'])->update([
+        Reservation::find($request['reservation_id'])->update([
                 "evaluation_status" => true,
             ]);
 

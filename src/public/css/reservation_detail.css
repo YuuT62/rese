@@ -4,7 +4,6 @@
     text-align: center;
 }
 
-
 .detail-content {
     background-color: #305dff;
     border-radius: 5px;
@@ -56,6 +55,7 @@
 .detail-content__button{
     height: 20px;
 }
+
 .detail-content__button-submit {
     cursor: pointer;
     border: none;
@@ -74,7 +74,6 @@
         width: 60%;
     }
 
-
     .detail-content__header {
         font-size: clamp(10px, 3vw, 20px);
     }
@@ -83,10 +82,10 @@
         margin-bottom: 3vw;
     }
 
-
     .detail-content__table-row{
         line-height: 4vw;
     }
+
     .detail-content__table-header,
     .detail-content__table-desc,
     .detail-content__button-submit{

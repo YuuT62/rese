@@ -14,6 +14,6 @@
     <p class="qr-form__text" id="qr-msg">QRコードが見つかりません</p>
 </div>
 <script src="{{ asset('js/jsQR.js') }}"></script>
-<script src="{{ asset('js/script.js') }}"></script>
+<script src="{{ asset('js/qrcode.js') }}"></script>
 
 @endsection

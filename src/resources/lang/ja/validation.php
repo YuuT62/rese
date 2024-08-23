@@ -150,5 +150,8 @@ return [
         'name' => 'お名前',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
+        'amount' => '金額',
+        'subject' => '件名',
+        'message' => '本文',
     ],
 ];

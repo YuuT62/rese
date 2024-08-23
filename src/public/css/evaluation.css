@@ -14,11 +14,9 @@
     font-size: 20px;
 }
 
-
 .evaluation-content__header {
     margin: 20px;
 }
-
 
 .evaluation-content__table{
     margin: 20px;
@@ -53,6 +51,7 @@
     padding: 20px;
     margin-bottom: 100px;
 }
+
 .evaluation-content__comment-input{
     width: 100%;
     resize: none;
@@ -86,6 +85,7 @@
     .evaluation-content__table{
         margin: 10px 20px 10px;
     }
+
     .evaluation-content__grade-title{
         font-size: clamp(12px, 2.5vw, 16px);
         width: 20vw;

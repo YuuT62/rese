@@ -27,10 +27,9 @@
     position: relative;
 }
 
-
-.edit-content__name input,
-.edit-content__area select,
-.edit-content__genre select{
+.edit-content__name-input,
+.edit-content__area-select,
+.edit-content__genre-select{
     border: none;
     outline: none;
     padding: 5px 10px;
@@ -39,12 +38,13 @@
     width: 100%;
     font-size: 12px;
     vertical-align: middle;
+    border-radius: 3px;
 }
 
 .edit-content__select-icon {
     position: absolute;
     top: 50%;
-    left: 85%;
+    left: 84%;
     transform: translate(0%, -50%);
     width: 13px;
     height: 10px;
@@ -62,9 +62,11 @@
     resize: none;
     border: none;
     outline: none;
+    border-radius: 3px;
+    padding: 5px;
 }
 
-.edit-content__button button {
+.edit-content__button-submit {
     cursor: pointer;
     border: none;
     border-radius: 0 0 5px 5px;
@@ -75,34 +77,51 @@
 }
 
 @media screen and (max-width: 768px) {
-    .reservation-content {
+    .edit-content {
         position: unset;
         margin: 0 auto;
         width: 70%;
         padding-top: 5px;
     }
 
-    .reservation-content__header {
-        font-size: 2vw;
+    .edit-content__header {
+        font-size: clamp(14px, 2.5vw, 20px);
     }
 
-    .reservation-content__calender-icon,
-    .reservation-content__select-icon {
-        top: 50%;
-    }
-
-    .reservation-content__table-wrapper {
+    .edit-content__table-wrapper {
         margin-bottom: 50px;
     }
 
-    .reservation-content__date,
-    .reservation-content__time,
-    .reservation-content__num {
-        margin-bottom: 3px;
-    }
-
-    .reservation-content__error {
+    .edit-content__error {
         height: 3vw;
         font-size: 2vw;
+    }
+
+    .edit-content__overview{
+        margin-bottom: 10px;
+    }
+
+    .edit-content__overview-input{
+        font-size: clamp(10px, 2vw, 12px);
+    }
+
+    .edit-content__name,
+    .edit-content__area,
+    .edit-content__genre{
+        margin-bottom: 0;
+        padding: 5px 20px;
+        width: 50vw;
+        max-width: 300px;
+        min-width: 220px;
+    }
+
+    .edit-content__name-input,
+    .edit-content__area-select,
+    .edit-content__genre-select{
+        font-size: clamp(10px, 2vw, 12px);
+    }
+
+    .edit-content__button-submit{
+        font-size: clamp(10px, 2vw, 12px);
     }
 }

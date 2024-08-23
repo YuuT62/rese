@@ -7,11 +7,9 @@ use App\Models\Reservation;
 use App\Models\Favorite;
 use Illuminate\Support\Facades\Auth;
 
-
-
-
 class UserController extends Controller
 {
+// マイページ表示
     public function mypage(){
         $user_id=Auth::id();
         $user_name=Auth::user()->name;
@@ -21,13 +19,14 @@ class UserController extends Controller
         return view('mypage', compact('user_id', 'user_name','reservations','favorites'));
     }
 
+// マイページお気に入り処理
     public function favoriteTrue(Request $request){
         if(empty(session()->get('key_true'))){
             session()->flash('key_true', 'key_reload');
             $user_id=Auth::id();
             $user_name=Auth::user()->name;
-            $shop_id=$request['shop-id'];
-            $favorite_id=$request['favorite-id'];
+            $shop_id=$request['shop_id'];
+            $favorite_id=$request['favorite_id'];
             $favorites=Favorite::with('shop')->UserSearch($user_id)->StatusSearch(true)->get();
             $reservations=Reservation::with('shop')->UserSearch($user_id)->get
             ();
@@ -55,8 +54,8 @@ class UserController extends Controller
             session()->flash('key_false', 'key_reload');
             $user_id=Auth::id();
             $user_name=Auth::user()->name;
-            $shop_id=$request['shop-id'];
-            $favorite_id=$request['favorite-id'];
+            $shop_id=$request['shop_id'];
+            $favorite_id=$request['favorite_id'];
             $favorites=Favorite::with('shop')->UserSearch($user_id)->StatusSearch(true)->get();
             $reservations=Reservation::with('shop')->UserSearch($user_id)->get
             ();
@@ -75,6 +74,7 @@ class UserController extends Controller
         }
     }
 
+// サンクスページ表示
     public function thanks(){
         return view ('thanks');
     }

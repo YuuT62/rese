@@ -25,7 +25,7 @@ class ReservationResultRequest extends FormRequest
     {
         return [
             'reservation' => ['required','after:now'],
-            'num-result' => 'required'
+            'num_result' => 'required'
         ];
     }
 
@@ -34,7 +34,7 @@ class ReservationResultRequest extends FormRequest
     return [
         'reservation.required' => '予約時間を入力してください',
         'reservation.after' => '現在時刻以降の予約時間を入力してください',
-        'num-result.required' => '予約人数を入力してください',
+        'num_result.required' => '予約人数を入力してください',
         ];
     }
 }

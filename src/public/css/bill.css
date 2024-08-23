@@ -17,16 +17,14 @@
     font-size: 18px;
 }
 
-.bill__amount{
+.bill__form-amount{
     border-radius: 5px;
     padding: 12px;
     border: 1px solid rgba(50, 50, 93, 0.1);
-    height: 44px;
     width: 90%;
     background: white;
-    margin: 0 15px 20px;
+    margin: 0 15px 5px;
 }
-
 
 .bill__button-submit{
     cursor: pointer;
@@ -36,4 +34,37 @@
     background-color: #0738ff;
     width: 100%;
     padding: 15px;
+}
+
+.bill__form-error{
+    height: 30px;
+    color: red;
+    margin: 0;
+    padding-left: 20px;
+}
+
+@media screen and (max-width: 768px){
+    .bill__body{
+        width: 50vw;
+    }
+
+    .bill__header{
+        font-size: clamp(10px, 2.5vw, 18px);
+    }
+
+    .bill__form-amount{
+        font-size: clamp(8px, 2vw, 16px);
+        padding: 2vw;
+        width: 85%;
+    }
+
+    .bill__button-submit{
+        font-size: clamp(8px, 2vw, 16px);
+        padding: 2vw;
+    }
+
+    .bill__form-error{
+        height: 4vw;
+        font-size: clamp(8px, 2vw, 16px);
+    }
 }

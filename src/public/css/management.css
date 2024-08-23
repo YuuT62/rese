@@ -6,6 +6,24 @@
     display: flex;
 }
 
+.management-header__button-submit,
+.management-content-table__form-submit {
+    background-color: #305dff;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 7px 15px;
+    cursor: pointer;
+    width: 100px;
+    font-size: 12px;
+}
+
+.management-content-table__form-submit{
+    width: 70px;
+    margin-right: 0;
+}
+
 .management-content {
     max-width: 1230px;
     margin: 0 auto;
@@ -16,10 +34,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
-.management-content__header h2{
-    font-size: 32px;
+
+.management-content__header{
+    font-size: 28px;
 }
 
 .management-content__back {
@@ -61,6 +79,22 @@
         font-size: clamp(16px, 3vw, 32px);
     }
 
+    .management-header__button-submit,
+    .management-content-table__form-submit {
+        font-size: clamp(8px, 2vw, 12px);
+        max-width: 100px;
+        width: 18vw;
+        margin-right: 5px;
+        padding: 5px 10px;
+    }
+
+    .management-content-table__form-submit {
+        width: 10vw;
+        max-width: 70px;
+        margin-right: 0;
+        padding: 5px;
+    }
+
     .management-content-table__header {
         padding: 1vw;
         font-size: clamp(12px, 2.5vw, 20px);
@@ -71,8 +105,7 @@
     }
 
     .management-content-table__desc {
-        padding: 10px 3vw;
+        padding: 10px 2vw;
         font-size: clamp(10px, 2.5vw, 16px);
     }
-
 }

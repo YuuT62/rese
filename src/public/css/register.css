@@ -51,6 +51,7 @@ body,
     height: 20px;
     margin-right: 5px;
 }
+
 .register-form__name-icon,
 .register-form__password-icon {
     width: 20px;
@@ -69,7 +70,6 @@ body,
     border-radius: 5px;
     color: #fff;
     padding: 5px 15px;
-
 }
 
 .register-form__error{
@@ -81,8 +81,6 @@ body,
     font-size: 12px;
     padding-left: 70px;
 }
-
-
 
 /* レスポンシブデザイン */
 @media screen and (max-width: 768px) {

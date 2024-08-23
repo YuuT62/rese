@@ -8,10 +8,10 @@
 @section('content')
 <div class="detail-wrapper">
     <div class="detail-content">
-        <h2 class="detail-content__shop-name">
+        <h1 class="detail-content__shop-name">
             <a class="detail-content__back" href="/management"><</a>
             {{ $shop->shop_name }}
-        </h2>
+        </h1>
         <div class="detail-content__shop-img">
             <img src="{{ asset('storage/shop-img/'.$shop->img) }}" alt="shop-img">
         </div>
@@ -30,11 +30,11 @@
         <form class="edit-content__input" method="post" action="/update">
             @csrf
             <div class="edit-content__name">
-                <input type="text" name="shop-name" value="{{ $shop->shop_name }}">
+                <input class="edit-content__name-input" type="text" name="shop_name" value="{{ $shop->shop_name }}">
             </div>
 
             <div class="edit-content__area">
-                <select name="area-id">
+                <select class="edit-content__area-select" name="area_id">
                     <option value="1" @if(1 === $shop->area_id) selected @endif>東京都</option>
                     <option value="2" @if(2 === $shop->area_id) selected @endif>大阪府</option>
                     <option value="3" @if(3 === $shop->area_id) selected @endif>福岡県</option>
@@ -43,7 +43,7 @@
             </div>
 
             <div class="edit-content__genre">
-                <select name="genre-id">
+                <select class="edit-content__genre-select" name="genre_id">
                     <option value="1" @if(1 === $shop->genre_id) selected @endif>寿司</option>
                     <option value="2" @if(2 === $shop->genre_id) selected @endif>焼肉</option>
                     <option value="3" @if(3 === $shop->genre_id) selected @endif>居酒屋</option>
@@ -57,7 +57,7 @@
                 <textarea class="edit-content__overview-input" name="overview" rows="10" placeholder="店舗概要入力欄" value="{{ $shop->overview }}">{{ $shop->overview }}</textarea>
             </div>
             <div class="edit-content__button">
-                <input type="hidden" name="shop-id" value="{{ $shop->id }}">
+                <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                 <button class="edit-content__button-submit" type="submit">修正</button>
             </div>
         </form>

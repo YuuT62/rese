@@ -5,12 +5,6 @@
 @endsection
 
 @section('content')
-<x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Subscription') }}
-        </h2>
-</x-slot>
-
 <div class="credit-wrapper">
     <div class="credit__body">
         <div class="credit__amount">

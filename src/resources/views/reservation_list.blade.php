@@ -7,10 +7,10 @@
 
 @section('content')
 <div class="reservation-list">
-    <h2 class="reservation-list__header">
+    <h1 class="reservation-list__header">
         <a class="reservation-list__back" href="/management"><</a>
         {{ $shop->shop_name }}
-    </h2>
+    </h1>
     <table class="reservation-list-table">
         <tr class="reservation-list-table__row">
             <th class="reservation-list-table__header">お名前</th>

@@ -8,9 +8,9 @@
 <div class="register-content">
     <form class="register-form" action="/add" method="post">
         @csrf
-        <h2 class="register-form__header">
+        <h1 class="register-form__header">
         Store representative registration
-        </h2>
+        </h1>
         <div class="register-form__name">
             <img class="register-form__name-icon" src="{{ asset('storage/icon/name_icon.png') }}" alt="mail_icon">
             <input type="text" name="name" value="{{ old('name') }}" placeholder="Username">

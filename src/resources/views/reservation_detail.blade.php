@@ -7,9 +7,9 @@
 @section('content')
 <div class="detail-wrapper">
     <div class="detail-content">
-        <h2 class="detail-content__header">
+        <h1 class="detail-content__header">
             予約詳細
-        </h2>
+        </h1>
         <form class="detail-content__form" action="/reservation/confirm" method="post">
             @csrf
             <div class="detail-content__table-wrapper">
@@ -42,7 +42,7 @@
             </div>
             <div class="detail-content__button">
                 @if(parse_url(url()->previous(), PHP_URL_PATH) === "/reservation/confirm")
-                    <input type="hidden" name="reservation-id" value="{{ $reservation->id }}">
+                    <input type="hidden" name="reservation_id" value="{{ $reservation->id }}">
                     <button class="detail-content__button-submit" type="submit">確認済みにする</button>
                 @endif
             </div>

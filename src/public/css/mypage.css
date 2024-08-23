@@ -17,7 +17,6 @@
     font-size: 12px;
 }
 
-
 .mypage-wrapper{
     max-width: 1230px;
     margin: 0 auto;
@@ -67,10 +66,10 @@
     height: 20px;
     margin-right: 20px;
 }
+
 .reservation-status__detail-num span {
     color: #fff;
     vertical-align: middle;
-
 }
 
 .reservation-status__button{
@@ -114,7 +113,6 @@
     font-weight: 400;
     font-size: 14px;
 }
-
 
 .favorite-content{
     width: 54%;
@@ -194,24 +192,26 @@
     height: 100%;
 }
 
-
 @media screen and (max-width: 768px) {
-
     .mypage-header__button-submit{
         font-size: clamp(8px, 2vw, 12px);
         max-width: 100px;
         width: 20vw;
     }
+
     .mypage-wrapper{
         width: 70vw;
     }
+
     .mypage-content {
         display: unset;
         width: 100%;
     }
+
     .reservation-status{
         width: 100%;
     }
+
     .reservation-status__wrapper{
         display: flex;
         flex-wrap: wrap;
@@ -232,6 +232,7 @@
         height: 2vw;
         margin-right: 0.5vw;
     }
+
     .reservation-status__detail-num span
     {
         font-size: 1.5vw;
@@ -243,6 +244,7 @@
         font-size: 1.5vw;
         border: 1px solid #fff;
     }
+
     .reservation-status__detail-delete button{
         font-size: 1vw;
         border: 1px solid #fff;
@@ -254,6 +256,7 @@
     .reservation-content__result tr {
         line-height: 3vw;
     }
+
     .reservation-content__result th,
     .reservation-content__result td {
         font-size: 2vw;
@@ -262,6 +265,7 @@
     .favorite-content{
         width: 100%;
     }
+
     .shop-info {
         width: 48%;
     }
@@ -293,11 +297,11 @@
         height: 20vw;
     }
 
-
     .mypage-name{
         font-size: 3vw;
         margin-bottom: 0;
     }
+
     .reservation-status__header,
     .favorite-content__header{
         font-size: 2.5vw;

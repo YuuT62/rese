@@ -12,7 +12,6 @@ use App\Mail\SendEmail;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 
-
 class ManagementController extends Controller
 {
 // マネジメントページ表示
@@ -52,6 +51,10 @@ class ManagementController extends Controller
 
     public function send(Request $request){
         //メール送信に使うインスタンスを生成
+        $request->validate([
+            'subject' => ['required'],
+            'message' => ['required'],
+        ]);
         $data = $request->all();
         $send_email = new SendEmail($data);
 
@@ -81,11 +84,11 @@ class ManagementController extends Controller
     }
 
     public function update(Request $request){
-        $shop_id=$request['shop-id'];
+        $shop_id=$request['shop_id'];
         Shop::find($shop_id)->update([
-            "shop_name" => $request['shop-name'],
-            "genre_id" => $request['genre-id'],
-            "area_id" => $request['area-id'],
+            "shop_name" => $request['shop_name'],
+            "genre_id" => $request['genre_id'],
+            "area_id" => $request['area_id'],
             "overview" => $request['overview']
         ]);
         return view('completion');
@@ -97,15 +100,15 @@ class ManagementController extends Controller
     }
 
     public function createShop(Request $request){
-        $file_name=$request->file('shop-img')->getClientOriginalName();
-        $img_path=$request->file('shop-img')->storeAs('public/shop-img', $file_name);
+        $file_name=$request->file('shop_img')->getClientOriginalName();
+        $img_path=$request->file('shop_img')->storeAs('public/shop-img', $file_name);
         $user_id=Auth::id();
 
         Shop::create([
-            'shop_name' => $request['shop-name'],
+            'shop_name' => $request['shop_name'],
             'user_id' => $user_id,
-            'genre_id' => $request['genre-id'],
-            'area_id' => $request['area-id'],
+            'genre_id' => $request['genre_id'],
+            'area_id' => $request['area_id'],
             'overview' => $request['overview'],
             'img' => $file_name,
         ]);
@@ -121,16 +124,21 @@ class ManagementController extends Controller
         return view ('reservation_list', compact('shop', 'reservations'));
     }
 
+// 予約詳細
     public function reservationDetail(Request $request){
         $reservation=Reservation::find($request['reservation_id']);
         return view('reservation_detail', compact('reservation'));
     }
 
+// 金額請求
     public function bill(){
         return view('bill');
     }
 
     public function billQR(Request $request){
+        $request->validate([
+            'amount' => ['required','integer'],
+        ]);
         $amount=$request['amount'];
         return view('bill_qrcode', compact('amount'));
     }

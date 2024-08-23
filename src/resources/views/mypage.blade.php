@@ -16,14 +16,14 @@
 @section('content')
 
 <div class="mypage-wrapper">
-    <h2 class="mypage-name">
+    <h1 class="mypage-name">
         {{ $user_name }}さん
-    </h2>
+    </h1>
     <div class="mypage-content">
         <div class="reservation-status">
-            <h3 class="reservation-status__header">
+            <h2 class="reservation-status__header">
                 予約状況
-            </h3>
+            </h2>
             <?php $num=1; ?>
             <div class="reservation-status__wrapper">
                 @foreach($reservations as $reservation)
@@ -36,8 +36,7 @@
                             <div class="reservation-status__button">
                                 <form class="reservation-status__detail-delete" action="/reservation/delete" method="post">
                                     @csrf
-                                    <input type="hidden" name="reservation-id" value="{{ $reservation->id }}">
-                                    <input type="hidden" name="user-id" value="{{ $user_id }}">
+                                    <input type="hidden" name="reservation_id" value="{{ $reservation->id }}">
                                     <button>✕</button>
                                 </form>
                             </div>
@@ -69,18 +68,18 @@
                             @if($reservation->visit_status == false)
                             <form class="reservation-status__evaluation" action="/reservation/qr" method="post">
                                 @csrf
-                                <input type="hidden" name="reservation-id" value="{{$reservation->id}}">
+                                <input type="hidden" name="reservation_id" value="{{$reservation->id}}">
                                 <button class="reservation-status__evaluation-submit">QRコード</button>
                             </form>
                             <form class="reservation-status__change" action="/reservation/edit" method="get">
-                                <input type="hidden" name="reservation-id" value="{{$reservation->id}}">
+                                <input type="hidden" name="reservation_id" value="{{$reservation->id}}">
                                 <button class="reservation-status__change-submit">変更</button>
                             </form>
                             @else
                                 @if($reservation->evaluation_status == false)
                                 <form class="reservation-status__evaluation" action="/reservation/evaluation" method="post">
                                     @csrf
-                                    <input type="hidden" name="reservation-id" value="{{$reservation->id}}">
+                                    <input type="hidden" name="reservation_id" value="{{$reservation->id}}">
                                     <button class="reservation-status__evaluation-submit">評価</button>
                                 </form>
                                 @else
@@ -95,9 +94,9 @@
             </div>
         </div>
         <div class="favorite-content">
-            <h3 class="favorite-content__header">
+            <h2 class="favorite-content__header">
                 お気に入り店舗
-            </h3>
+            </h2>
             <div class="shop-wrapper">
                 @foreach($favorites as $favorite)
                     <div class="shop-info">
@@ -116,8 +115,8 @@
                                 @if($favorite->status===1)
                                     <form class="shop-info__button--fav" action="/mypage/favorite/true" method="post">
                                         @csrf
-                                        <input type="hidden" name="favorite-id" value="{{ $favorite->id }}">
-                                        <input type="hidden" name="shop-id" value="{{ $favorite->shop_id }}" >
+                                        <input type="hidden" name="favorite_id" value="{{ $favorite->id }}">
+                                        <input type="hidden" name="shop_id" value="{{ $favorite->shop_id }}" >
                                         <button class="shop-info__button--fav-submit" type="submit">
                                                 <img src="{{ asset('storage/icon/fav_on_icon.png') }}" alt="fav_on_icon">
                                         </button>
@@ -126,8 +125,8 @@
                                 @else
                                     <form class="shop-info__button--fav" action="/mypage/favorite/false" method="post">
                                         @csrf
-                                        <input type="hidden" name="favorite-id" value="{{ $favorite->id }}">
-                                        <input type="hidden" name="shop-id" value="{{ $favorite->shop_id }}" >
+                                        <input type="hidden" name="favorite_id" value="{{ $favorite->id }}">
+                                        <input type="hidden" name="shop_id" value="{{ $favorite->shop_id }}" >
                                         <button class="shop-info__button--fav-submit" type="submit">
                                                 <img src="{{ asset('storage/icon/fav_off_icon.png') }}" alt="fav_off_icon">
                                         </button>

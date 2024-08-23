@@ -36,10 +36,22 @@
     padding: 10px 20px;
 }
 
+.reservation-list-table__form-submit{
+    background-color: #305dff;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 7px 15px;
+    cursor: pointer;
+    width: 60px;
+    font-size: 12px;
+}
+
 @media screen and (max-width: 768px) {
     .reservation-list__header {
             font-size: clamp(16px, 3vw, 32px);
-        }
+    }
 
     .reservation-list-table__header {
         padding: 1vw;
@@ -53,5 +65,13 @@
     .reservation-list-table__desc {
         padding: 10px 3vw;
         font-size: clamp(10px, 2.5vw, 16px);
+    }
+
+    .reservation-list-table__form-submit{
+        width: 8vw;
+        max-width: 70px;
+        margin-right: 0;
+        padding: 5px;
+        font-size: clamp(8px, 2vw, 12px);
     }
 }

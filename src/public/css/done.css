@@ -26,7 +26,6 @@ body,
     padding: 5px 15px;
 }
 
-
 @media screen and (max-width: 768px) {
     .done-content{
         width: 60vw;

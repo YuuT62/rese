@@ -7,10 +7,10 @@
 @section('content')
 <div class="detail-wrapper">
     <div class="detail-content">
-        <h2 class="detail-content__shop-name">
+        <h1 class="detail-content__shop-name">
             <a class="detail-content__back" href="/"><</a>
             {{ $shop->shop_name }}
-        </h2>
+        </h1>
         <div class="detail-content__shop-img">
             <img src="{{ asset('storage/shop-img/'.$shop->img) }}" alt="shop-img">
         </div>
@@ -28,9 +28,9 @@
         </h2>
         <form class="reservation-content__input" action="/detail/{{$shop->id}}" method="get">
             <div class="reservation-content__date">
-                <input type="date" name="date-input" value="<?php
-                    if(isset($_GET["date-input"])){
-                        echo $_GET["date-input"];
+                <input type="date" name="date_input" value="<?php
+                    if(isset($_GET["date_input"])){
+                        echo $_GET["date_input"];
                     }
                     else{
                         echo date('Y-m-d');
@@ -40,17 +40,17 @@
             </div>
 
             <div class="reservation-content__error">
-                @error('date-input')
+                @error('date_input')
                     {{ '※'.$message }}
                 @enderror
             </div>
 
             <div class="reservation-content__time">
-                <select name="time-input" onchange="this.form.submit()">
+                <select name="time_input" onchange="this.form.submit()">
                     <option value="" hidden>時間を選択してください</option>
                     @for($time=17; $time<=22; $time++)
-                        <option value="{{ $time.':00' }}" @if($time.':00' === @$_GET["time-input"] ) selected @endif>{{$time.':00'}}</option>
-                        <option value="{{ $time.':30'}}"  @if($time.':30' === @$_GET["time-input"] ) selected @endif>{{$time.':30'}}</option>
+                        <option value="{{ $time.':00' }}" @if($time.':00' === @$_GET["time_input"] ) selected @endif>{{$time.':00'}}</option>
+                        <option value="{{ $time.':30'}}"  @if($time.':30' === @$_GET["time_input"] ) selected @endif>{{$time.':30'}}</option>
                     @endfor
                 </select>
                 <img class="reservation-content__select-icon" src="{{ asset('storage/icon/select_icon.png') }}" alt="select_icon">
@@ -63,24 +63,24 @@
             </div>
 
             <div class="reservation-content__num">
-                <select name="num-input" onchange="this.form.submit()">
+                <select name="num_input" onchange="this.form.submit()">
                     <option value="" hidden>人数を選択してください</option>
                     @for($num=1; $num<=10; $num++)
-                        <option value="{{$num}}" @if($num === (int)@$_GET["num-input"] ) selected @endif>{{$num.'人'}}</option>
+                        <option value="{{$num}}" @if($num === (int)@$_GET["num_input"] ) selected @endif>{{$num.'人'}}</option>
                     @endfor
                 </select>
                 <img class="reservation-content__select-icon" src="{{ asset('storage/icon/select_icon.png') }}" alt="select_icon">
             </div>
 
             <div class="reservation-content__error">
-                @error('num-result')
+                @error('num_result')
                     {{ '※'.$message }}
                 @enderror
             </div>
         </form>
         <form class="reservation-content__result" action="/reservation/add" method="post">
             @csrf
-            <input type="hidden" name="shop-id" value="$shop->id">
+            <input type="hidden" name="shop_id" value="$shop->id">
             <div class="reservation-content__table-wrapper">
                 <table class="reservation-content__table">
                     <tr>
@@ -90,27 +90,27 @@
                     <tr>
                         <th>Date</th>
                         <td><?php
-                        $date = explode(' ',@$_GET["date-input"])[0];
+                        $date = explode(' ',@$_GET["date_input"])[0];
                         print $date;
                         ?></td>
-                        <input type="hidden" name="date-result" value="{{ $date }}">
+                        <input type="hidden" name="date_result" value="{{ $date }}">
                     </tr>
                     <tr>
                         <th>Time</th>
                         <td><?php
-                        $time = @$_GET["time-input"];
+                        $time = @$_GET["time_input"];
                         print $time;
                         ?></td>
-                        <input type="hidden" name="time-result" value="{{ $time }}">
+                        <input type="hidden" name="time_result" value="{{ $time }}">
                     </tr>
                     <tr>
                         <th>Number</th>
                         <td>
-                        @if(isset($_GET["num-input"]) && $_GET["num-input"] != "")
+                        @if(isset($_GET["num_input"]) && $_GET["num_input"] != "")
                             <?php
-                            echo $_GET["num-input"].'人';
+                            echo $_GET["num_input"].'人';
                             ?>
-                            <input type="hidden" name="num-result" value="{{ $_GET["num-input"] }}">
+                            <input type="hidden" name="num_result" value="{{ $_GET["num_input"] }}">
                         </td>
                         @endif
                     </tr>
@@ -125,7 +125,7 @@
                 @else
                 <input type="hidden" name="reservation">
                 @endif
-                <input type="hidden" name="shop-id" value="{{ $shop->id }}">
+                <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                 <button class="reservation-content__button-submit" type="submit">予約する</button>
             </div>
         </form>

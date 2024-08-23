@@ -53,6 +53,7 @@ body,
     display: flex;
     justify-content: space-between;
 }
+
 .shop-info__button button{
     background-color: #305dff;
     border: none;
@@ -61,6 +62,7 @@ body,
     padding: 7px 15px;
     cursor: pointer;
 }
+
 .shop-info__button--fav button{
     border: none;
     background-color: #fff;
@@ -75,12 +77,11 @@ body,
     height: 100%;
 }
 
-
 /* レスポンシブデザイン */
 @media screen and (max-width: 768px) {
     .shop-content {
             max-width: 600px;
-        }
+    }
 
     .shop-info {
         width: 48%;
@@ -89,7 +90,6 @@ body,
     .shop-info:nth-child(2n-1) {
         margin-right: 2%;
     }
-
 
     .shop-info__detail h2 {
         font-size: 2.5vw;

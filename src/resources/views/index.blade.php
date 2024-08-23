@@ -8,23 +8,23 @@
 @section('header')
 <form class="search-box" action="/search" method="get">
     <div class="search-box__area">
-        <select name="area-id" onchange="this.form.submit()">
+        <select name="area_id" onchange="this.form.submit()">
             <option value=" " selected>All area</option>
-            <option value="1" @if("1" === @$_GET["area-id"]) selected @endif>東京都</option>
-            <option value="2" @if("2" === @$_GET["area-id"]) selected @endif>大阪府</option>
-            <option value="3" @if("3" === @$_GET["area-id"]) selected @endif>福岡県</option>
+            <option value="1" @if("1" === @$_GET["area_id"]) selected @endif>東京都</option>
+            <option value="2" @if("2" === @$_GET["area_id"]) selected @endif>大阪府</option>
+            <option value="3" @if("3" === @$_GET["area_id"]) selected @endif>福岡県</option>
         </select>
         <img class="search-box__select-icon" src="{{ asset('storage/icon/select_icon.png') }}" alt="select_icon">
     </div>
 
     <div class="search-box__genre">
-        <select name="genre-id" onchange="this.form.submit()">
+        <select name="genre_id" onchange="this.form.submit()">
             <option value=" " selected>All genre</option>
-            <option value="1" @if("1" === @$_GET["genre-id"]) selected @endif>寿司</option>
-            <option value="2" @if("2" === @$_GET["genre-id"]) selected @endif>焼肉</option>
-            <option value="3" @if("3" === @$_GET["genre-id"]) selected @endif>居酒屋</option>
-            <option value="4" @if("4" === @$_GET["genre-id"]) selected @endif>イタリアン</option>
-            <option value="5" @if("5" === @$_GET["genre-id"]) selected @endif>ラーメン</option>
+            <option value="1" @if("1" === @$_GET["genre_id"]) selected @endif>寿司</option>
+            <option value="2" @if("2" === @$_GET["genre_id"]) selected @endif>焼肉</option>
+            <option value="3" @if("3" === @$_GET["genre_id"]) selected @endif>居酒屋</option>
+            <option value="4" @if("4" === @$_GET["genre_id"]) selected @endif>イタリアン</option>
+            <option value="5" @if("5" === @$_GET["genre_id"]) selected @endif>ラーメン</option>
         </select>
         <img class="search-box__select-icon" src="{{ asset('storage/icon/select_icon.png') }}" alt="select_icon">
     </div>
@@ -53,7 +53,7 @@
 
                     <form class="shop-info__button--fav" action="/" method="post">
                         @csrf
-                        <input type="hidden" name="shop-id" value="{{ $shop->id }}">
+                        <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                         <button class="shop-info__button--fav-submit" type="submit">
                             <?php $fav_boolean=true; ?>
                             @foreach($favorites as $favorite)

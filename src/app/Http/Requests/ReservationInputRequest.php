@@ -24,14 +24,14 @@ class ReservationInputRequest extends FormRequest
     public function rules()
     {
         return [
-            'date-input' => ['after:yesterday']
+            'date_input' => ['after:yesterday']
         ];
     }
 
     public function messages()
     {
     return [
-        'date-input.after' => '今日以降の日付を入力してください',
+        'date_input.after' => '今日以降の日付を入力してください',
         ];
     }
 }

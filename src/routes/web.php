@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DevController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ReservationController;
@@ -27,12 +26,10 @@ Route::middleware('verified')->group(function () {
     Route::post('/', [ShopController::class, 'favorite']);
     Route::get('/search', [ShopController::class, 'search']);
     Route::get('/detail/{shop_id}',[ShopController::class, 'detail']);
-
     Route::get('/mypage',[UserController::class, 'mypage']);
     Route::post('/mypage/favorite/true',[UserController::class, 'favoriteTrue']);
     Route::post('/mypage/favorite/false',[UserController::class, 'favoriteFalse']);
     Route::get('/thanks',[UserController::class, 'thanks']);
-
     Route::post('/reservation/add',[ReservationController::class, 'add']);
     Route::post('/reservation/delete',[ReservationController::class, 'delete']);
     Route::get('/reservation/edit',[ReservationController::class, 'edit']);
@@ -42,11 +39,9 @@ Route::middleware('verified')->group(function () {
     Route::post('/reservation/evaluation/add', [ReservationController::class, 'evaluationAdd']);
     Route::get('/done',[ReservationController::class, 'done']);
     Route::post('/reservation/qr', [QRController::class, 'qrcode']);
-
     Route::get('/credit/confirm',[QRController::class, 'confirm']);
     Route::get('/credit{amount}',[PaymentController::class, 'credit']);
     Route::post('/payment',[PaymentController::class, 'payment']);
-    Route::get('/credit/confirm',[QRController::class, 'confirm']);
 });
 
 // 管理者
@@ -66,10 +61,8 @@ Route::group(['middleware' => ['auth','can:representative']], function () {
     Route::post('/update',[ManagementController::class, 'update']);
     Route::get('/reservation_list/{shop_id}',[ManagementController::class, 'reservationList']);
     Route::get('/reservation_list/detail/{reservation_id}',[ManagementController::class, 'reservationDetail']);
-
-    Route::get('/reservation/confirm',[QRController::class, 'confirm']);
-    Route::post('/reservation/confirm',[QRController::class, 'visit']);
-
     Route::get('/bill',[ManagementController::class, 'bill']);
     Route::post('/bill/qr',[ManagementController::class, 'billQR']);
+    Route::get('/reservation/confirm',[QRController::class, 'confirm']);
+    Route::post('/reservation/confirm',[QRController::class, 'visit']);
 });
