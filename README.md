@@ -10,6 +10,8 @@
 
 #アプリケーションのURL
 
+http://ec2-52-199-99-204.ap-northeast-1.compute.amazonaws.com
+
 ※メール認証機能はAWSの「Amazon Simple Email Service」を使用しており、本稼働アクセスのリクエスト未実施（サンドボックス状態）のため、認証されたメールアドレス以外は登録できない状態です。
 
 ##機能一覧
@@ -106,7 +108,12 @@ composer install
 
 　32行目)　MAIL_HOST=mailcatcher
 
-  　37行目)　MAIL_FROM_ADDRESS=hoge@example.com
+  37行目)　MAIL_FROM_ADDRESS=hoge@example.com
+
+  54行目）STRIPE_KEY="（Stripeアカウントの公開可能キー）"
+
+  55行目）STRIPE_SECRET="（Stripeアカウントのシークレットキー）"
+  
 
 php artisan key:generate
 
