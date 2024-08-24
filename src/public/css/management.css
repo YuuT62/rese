@@ -74,6 +74,23 @@
     justify-content: center;
 }
 
+.pagination {
+    display: flex;
+}
+
+li {
+    margin-right: 1px;
+}
+
+li:first-of-type {
+    margin-right: 3px;
+}
+
+li:last-of-type {
+    margin-left: 2px;
+    margin-right: 0;
+}
+
 @media screen and (max-width: 768px) {
     .management-content__header {
         font-size: clamp(16px, 3vw, 32px);

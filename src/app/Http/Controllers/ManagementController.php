@@ -120,7 +120,7 @@ class ManagementController extends Controller
     public function reservationList(Request $request){
         $shop_id=$request['shop_id'];
         $shop=Shop::find($shop_id);
-        $reservations=Reservation::ShopSearch($shop_id)->with('user')->get();
+        $reservations=Reservation::ShopSearch($shop_id)->VisitSearch(1)->with('user')->get();
         return view ('reservation_list', compact('shop', 'reservations'));
     }
 

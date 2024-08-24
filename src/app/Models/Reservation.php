@@ -43,4 +43,10 @@ class Reservation extends Model
         $query->where('reservation', 'like', '%' . $date . '%');
         }
     }
+
+    public function scopeVisitSearch($query, $visit){
+        if (!empty($visit)) {
+        $query->where('visit_status','!=', $visit);
+        }
+    }
 }

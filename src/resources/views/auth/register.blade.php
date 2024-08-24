@@ -12,7 +12,7 @@
         Registration
         </h2>
         <div class="register-form__name">
-            <img class="register-form__name-icon" src="{{ asset('storage/icon/name_icon.png') }}" alt="mail_icon">
+            <img class="register-form__name-icon" src="{{ asset('storage/icon/name_icon.png') }}" alt="name_icon">
             <input type="text" name="name" value="{{ old('name') }}" placeholder="Username">
         </div>
         <div class="register-form__error">
@@ -34,7 +34,7 @@
         </div>
 
         <div class="register-form__password">
-            <img class="register-form__password-icon" src="{{ asset('storage/icon/password_icon.png') }}" alt="mail_icon">
+            <img class="register-form__password-icon" src="{{ asset('storage/icon/password_icon.png') }}" alt="pass_icon">
             <input type="password" name="password" placeholder="Password">
         </div>
         <div class="register-form__error">

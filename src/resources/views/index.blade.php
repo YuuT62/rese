@@ -30,7 +30,7 @@
     </div>
 
     <div class="search-box__search">
-        <img class="search-box__search-icon" src="{{ asset('storage/icon/search_icon.png') }}" alt="mail_icon">
+        <img class="search-box__search-icon" src="{{ asset('storage/icon/search_icon.png') }}" alt="search_icon">
         <input type="text" name="keyword" value="<?php if(isset($keyword)){echo($keyword);}?>" placeholder="Search...">
     </div>
 </form>

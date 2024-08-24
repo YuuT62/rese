@@ -23,7 +23,7 @@
         </div>
 
         <div class="login-form__password">
-            <img class="login-form__password-icon" src="{{ asset('storage/icon/password_icon.png') }}" alt="mail_icon">
+            <img class="login-form__password-icon" src="{{ asset('storage/icon/password_icon.png') }}" alt="pass_icon">
             <input type="password" name="password" placeholder="Password">
         </div>
         <div class="login-form__error">
