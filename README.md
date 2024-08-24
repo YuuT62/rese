@@ -72,13 +72,13 @@ http://ec2-52-199-99-204.ap-northeast-1.compute.amazonaws.com
 
 ##テーブル設計
 
-![rese-table-1](https://github.com/user-attachments/assets/8dd43af0-09cf-4dca-b724-99a5211a51e5)
-![rese-table-2](https://github.com/user-attachments/assets/942c0d7f-1303-4943-9ce0-4b3cc43ae76d)
-![rese-table-3](https://github.com/user-attachments/assets/d87a9717-dbf5-4db9-a907-7907e6acb04c)
+![rese-table-1](https://github.com/user-attachments/assets/1915a13d-57e2-4e32-a8a1-6d6da2ab5000)
+![rese-table-2](https://github.com/user-attachments/assets/c17b6944-cffa-46cd-b041-58d356b4a6a1)
+![rese-table-3](https://github.com/user-attachments/assets/5169291e-9b20-4957-ace4-0e5c3e81d9a0)
 
 ##ER図
 
-![index](https://github.com/user-attachments/assets/34d5396c-12d2-48ba-97a6-1789e7fa1614)
+![index](https://github.com/user-attachments/assets/1ee15fcb-9d4e-48d3-9577-e7136ad8629c)
 
 ##環境構築
 
