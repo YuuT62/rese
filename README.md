@@ -121,6 +121,22 @@ php artisan migrate
 
 php artisan db:seed
 
+php artisan storage:link
+
+以下URLよりアイコン、店舗画像をダウンロードし、フォルダ毎に"rese/src/storage/app/public"に配置してください。
+
+https://1drv.ms/f/s!AoUAxOjhano5nh2gKN_zh_nR485o?e=5iKvzI
+
+ダウンロードフォルダ
+
+・icon
+
+・shop-image
+
+配置先
+
+・rese/src/storage/app/public
+
 ##mysql
 
 　アクセスURL：http://localhost:8080/
