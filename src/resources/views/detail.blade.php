@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+<link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @endsection
 
 @section('content')
@@ -20,6 +21,9 @@
         <p class="detail-content__shop-introduction">
             {{ $shop->overview }}
         </p>
+        @can('user')
+        <a href="/review/{{$shop->id}}">口コミを投稿する</a>
+        @endcan
     </div>
 
     <div class="reservation-content">

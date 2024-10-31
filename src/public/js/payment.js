@@ -1,4 +1,4 @@
-const stripe = Stripe("pk_test_51Pm677RrWkpTIcj79mxthfFzddcx1kqoO1NNG55E1jYSZiKc1NumMlZJtHrgFL9FrCUccdmenZ3WLCsJUi9Oc4gJ00SDDYYnJA");
+const stripe = Stripe("{{ env('STRIPE_KEY') }}");
 
 const elements = stripe.elements();
 const cardElement = elements.create('card');

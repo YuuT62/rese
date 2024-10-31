@@ -39,13 +39,13 @@ body,
 
 .shop-info__detail h2{
     margin: 0;
-    font-size: 20px;
+    font-size: clamp(1rem, 0.912rem + 0.44vw, 1.25rem);
 }
 
 .shop-info__detail p{
     margin: 0;
     margin-bottom: 15px;
-    font-size: 12px;
+    font-size: clamp(0.5rem, 0.412rem + 0.44vw, 0.75rem);
     font-weight: bold;
 }
 
@@ -61,6 +61,7 @@ body,
     color: #fff;
     padding: 7px 15px;
     cursor: pointer;
+    font-size: clamp(0.5rem, 0.412rem + 0.44vw, 0.75rem);
 }
 
 .shop-info__button--fav button{
@@ -91,17 +92,11 @@ body,
         margin-right: 2%;
     }
 
-    .shop-info__detail h2 {
-        font-size: 2.5vw;
-    }
-
     .shop-info__detail p {
-        font-size: 1.6vw;
         margin-bottom: 10px;
     }
 
     .shop-info__button button{
-        font-size: 1.5vw;
         padding: 5px 12px;
     }
 

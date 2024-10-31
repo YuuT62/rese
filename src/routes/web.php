@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\QRController;
 use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,10 @@ Route::middleware('verified')->group(function () {
     Route::get('/credit/confirm',[QRController::class, 'confirm']);
     Route::get('/credit{amount}',[PaymentController::class, 'credit']);
     Route::post('/payment',[PaymentController::class, 'payment']);
+
+    // 追加
+    Route::get('/sort',[ShopController::class, 'sort']);
+    Route::get('/review/{shop_id}',[ShopController::class, 'review']);
 });
 
 // 管理者
@@ -65,4 +70,11 @@ Route::group(['middleware' => ['auth','can:representative']], function () {
     Route::post('/bill/qr',[ManagementController::class, 'billQR']);
     Route::get('/reservation/confirm',[QRController::class, 'confirm']);
     Route::post('/reservation/confirm',[QRController::class, 'visit']);
+});
+
+// 追加
+// 利用者
+Route::group(['middleware' => ['auth','can:user']], function () {
+    Route::get('/review/{shop_id}',[ReviewController::class, 'review']);
+    Route::post('/review/send' ,[ReviewController::class, 'reviewSend']);
 });

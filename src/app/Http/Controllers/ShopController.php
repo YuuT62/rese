@@ -63,4 +63,58 @@ class ShopController extends Controller
         $favorites=Favorite::UserSearch($user_id)->get();
         return view ('index', compact('area_id','genre_id' ,'keyword' ,'shops', 'favorites'));
     }
+
+// 追加
+    // 店舗一覧ソート
+    public function sort(Request $request){
+        $user_id=Auth::id();
+        $favorites=Favorite::UserSearch($user_id)->get();
+        // ランダム
+        if($request['sort']==="1"){
+            $shops=Shop::inRandomOrder()->get();
+            return view ('index', compact('shops', 'favorites'));
+        // 評価高い順
+        }else if($request['sort']==="2"){
+            $shops=Shop::with('evaluation')->get();
+            $scores=[];
+            foreach($shops as $shop){
+                $score=0;
+                if($shop->evaluation->count()!==0){
+                    foreach($shop->evaluation as $evaluation){
+                        $score+=$evaluation->evaluation_general;
+                    }
+                    $score=$score/$shop->evaluation->count();
+                    $scores[$shop->id]=$score;
+                }else{
+                    $scores[$shop->id]=0;
+                }
+            }
+            arsort($scores);
+            $scores=array_keys($scores);
+            $shops=Shop::whereIn('id', $scores)->orderByRaw('FIELD(id, '.implode(',', $scores).')')->get();
+            return view ('index', compact('shops', 'favorites'));
+        // 評価低い順
+        }else{
+            $shops=Shop::with('evaluation')->get();
+            $scores=[];
+            foreach($shops as $shop){
+                $score=0;
+                if($shop->evaluation->count()!==0){
+                    foreach($shop->evaluation as $evaluation){
+                        $score+=$evaluation->evaluation_general;
+                    }
+                    $score=$score/$shop->evaluation->count();
+                    $scores[$shop->id]=$score;
+                }else{
+                    $scores[$shop->id]=10;
+                }
+            }
+            asort($scores);
+            $scores=array_keys($scores);
+            $shops=Shop::whereIn('id', $scores)->orderByRaw('FIELD(id, '.implode(',', $scores).')')->get();
+            return view ('index', compact('shops', 'favorites'));
+        }
+    }
+
+    
 }

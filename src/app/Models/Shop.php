@@ -30,6 +30,10 @@ class Shop extends Model
         return $this->belongsTo(Area::class);
     }
 
+    public function evaluation(){
+        return $this->hasMany(Evaluation::class);
+    }
+
     public function scopeAreaSearch($query, $area_id){
         if (!empty($area_id)) {
         $query->where('area_id', $area_id);

@@ -32,5 +32,14 @@ class UsersTableSeeder extends Seeder
             'email_verified_at' => new DateTime('2024-01-01'),
         ];
         DB::table('users')->insert($param);
+
+        $param = [
+            'role_id' => 3,
+            'name' => 'テスト次郎',
+            'email' => 'test1@example.com',
+            'password' => bcrypt('P@ssw0rd'),
+            'email_verified_at' => new DateTime('2024-01-01'),
+        ];
+        DB::table('users')->insert($param);
     }
 }

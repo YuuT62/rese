@@ -1,0 +1,82 @@
+.sort-box{
+    width: 30%;
+    min-width: 125px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 2px 2px 3px #808080;
+    margin-right: clamp(0.313rem, -0.237rem + 2.75vw, 1.875rem);
+    position: relative;
+}
+
+.sort-box__label{
+    display: block;
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sort-box__select {
+    position: absolute;
+    left: -10%;
+    top: 70%;
+    font-size: 12px;
+    width: 180%;
+    border: 1px solid #C8C8C8;
+    border-radius: 5px;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.sort-box__select-radio{
+    display: none;
+}
+
+.sort-box__select-button{
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    text-align: left;
+    padding: 0;
+}
+.sort-box__select-button:hover{
+    background-color: #5680F8
+}
+.sort-box__select-label{
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
+.sort-box__select-label:hover{
+    color: #fff;
+}
+
+.sort-box__select-button--random,
+.sort-box__select-label--random{
+    border-radius: 3px 3px 0px 0px;
+}
+
+.sort-box__select-button--low,
+.sort-box__select-label--low{
+    border-radius: 0px 0px 3px 3px;
+}
+
+@media screen and (max-width: 768px){
+    .sort-box{
+        height: clamp(1.875rem, 1.429rem + 2.23vw, 2.5rem);
+        margin-bottom: 5px;
+        min-width: 100px;
+    }
+
+    .sort-box__label{
+        font-size: clamp(0.5rem, 0.321rem + 0.89vw, 0.75rem);
+    }
+}
+
+
