@@ -46,27 +46,43 @@
                 <span class="material-symbols-outlined star-icon">star_rate</span>
             </label>
             @endfor
+            <div class="error">
+                @error('score')
+                    {{ '※'.$message }}
+                @enderror
+            </div>
         </div>
         <h2 class="review-form__header">口コミを投稿</h2>
-        <textarea class="review-form__text"  name="comment" id="text" placeholder="カジュアルな夜のお出かけにおすすめのスポット" onkeyup="countUp(this)"></textarea>
-        <p class="review-form__text-counter">
-        <span id="counter">0</span>
+        <textarea class="review-form__text"  name="comment" id="textarea" placeholder="カジュアルな夜のお出かけにおすすめのスポット">{{ old('comment')}}</textarea>
+        <p class="review-form__text-counter" >
+        <span id="counter"></span>
         <span>/400（最高文字数）</span>
         </p>
+        <div class="error">
+            @error('comment')
+                {{ '※'.$message }}
+            @enderror
+        </div>
         <h2 class="review-form__header">画像の追加</h2>
         <div class="review-form__img">
-            <input class="review-form__img-input" name="review_img" type="file" id="img" onchange="drop()">
+            <input class="review-form__img-input" name="review_img" type="file" id="img" onchange="drop()" value="{{ old('review_img')}}">
             <label class="review-form__img-label" for="img" id="img-label">クリックして写真を追加</br>
             <span>またはドラッグアンドドロップ</span>
             </label>
         </div>
+        <div class="error">
+                @error('review_img')
+                    {{ '※'.$message }}
+                @enderror
+            </div>
         <input type="hidden" name="shop_id" value="{{ $shop->id }}">
         <div class="review-form__button">
-            <button class="review-form__button-submit" type="submit">口コミを投票</button>
+            <button class="review-form__button-submit" type="submit">口コミを投稿</button>
         </div>
     </form>
 </div>
 <script>
+    // 評価用星
     function scoreChange(){
         let score = document.getElementsByName('score');
         let len = score.length;
@@ -83,10 +99,23 @@
         }
     }
 
-    function countUp(obj){
-        document.getElementById('counter').innerHTML = obj.value.length;
-    }
+    // テキストカウンター
+    const textarea = document.getElementById("textarea");
+    const charCounter = document.getElementById("counter");
+    const maxLength = 400;
+    charCounter.textContent = `0`
+    textarea.addEventListener("input", () => {
+    const currentLength = textarea.value.length
+    charCounter.textContent = `${currentLength}`
 
+    if (currentLength > maxLength) {
+        charCounter.style.color = "red"
+    } else {
+        charCounter.style.removeProperty("color")
+    }
+    });
+
+    // 画像追加ボックス
     function drop(){
         document.getElementById('img-label').innerHTML=document.getElementById('img').files[0]['name'];
     }

@@ -1,29 +1,85 @@
 @extends('layouts.app')
 
 @section('css')
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,1,-50..200&icon_names=star_rate" />
 <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @endsection
 
 @section('content')
 <div class="detail-wrapper">
+    @if(session('messages'))
+    <div class="session">
+        {{session('messages')}}
+    </div>
+    @endif
     <div class="detail-content">
-        <h1 class="detail-content__shop-name">
-            <a class="detail-content__back" href="/"><</a>
-            {{ $shop->shop_name }}
-        </h1>
-        <div class="detail-content__shop-img">
-            <img src="{{ asset('storage/shop-img/'.$shop->img) }}" alt="shop-img">
-        </div>
-        <p class="detail-content__shop-tag">
-            #{{ $shop->area->area }} #{{ $shop->genre->genre}}
-        </p>
-        <p class="detail-content__shop-introduction">
-            {{ $shop->overview }}
-        </p>
-        @can('user')
-        <a href="/review/{{$shop->id}}">口コミを投稿する</a>
-        @endcan
+        @isset($review)
+            <div class="detail-content__shop-img detail-content__shop-img--user">
+                <img src="{{ asset('storage/shop-img/'.$shop->img) }}" alt="shop-img">
+            </div>
+            <p class="detail-content__shop-tag">
+                #{{ $shop->area->area }} #{{ $shop->genre->genre}}
+            </p>
+            <p class="detail-content__shop-introduction">
+                {{ $shop->overview }}
+            </p>
+            <div class="detail-content__review">
+                <form class="detail-content__review-form" action="/reviews/{{ $shop->id }}" method="get">
+                    <button class="detail-content__review-form-submit" type="submit">全ての口コミ情報</button>
+                </form>
+                <div class="detail-content__review-content">
+                    <div class="detail-content__review-buttons">
+                        <form class="detail-content__review-button" action="/review/edit">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{ $review->user_id }}">
+                            <input type="hidden" name="shop_id" value="{{ $review->shop_id}}">
+                            <button class="detail-content__review-button-submit">口コミを編集</button>
+                        </form>
+                        <form class="detail-content__review-button" action="/review/delete" method="post">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{ $review->user_id }}">
+                            <input type="hidden" name="shop_id" value="{{ $review->shop_id}}">
+                            <button class="detail-content__review-button-submit">口コミを削除</button>
+                        </form>
+                    </div>
+                    @for($num = 0; $num < $review->score; $num++)
+                        <span class="material-symbols-outlined star-icon" style="color:#305dff;">star_rate</span>
+                    @endfor
+                    @for($num = $review->score; $num < 5; $num++)
+                        <span class="material-symbols-outlined star-icon" style="color:#D8D8D8;">star_rate</span>
+                    @endfor
+                    <p class="detail-content__review-comment">{{ $review->comment }}</p>
+                </div>
+            </div>
+        @else
+            <h1 class="detail-content__shop-name">
+                <a class="detail-content__back" href="/"><</a>
+                {{ $shop->shop_name }}
+            </h1>
+            <div class="detail-content__shop-img">
+                <img src="{{ asset('storage/shop-img/'.$shop->img) }}" alt="shop-img">
+            </div>
+            <p class="detail-content__shop-tag">
+                #{{ $shop->area->area }} #{{ $shop->genre->genre}}
+            </p>
+            <p class="detail-content__shop-introduction">
+                {{ $shop->overview }}
+            </p>
+            @canany(['admin', 'representative'])
+                <form class="detail-content__review-form" action="/reviews/{{ $shop->id }}" method="get">
+                    <button class="detail-content__review-form-submit" type="submit">全ての口コミ情報</button>
+                </form>
+            @endcanany
+            @can('user')
+                <a class="detail-content__review-send" href="/review{{$shop->id}}" style="color:#000">口コミを投稿する</a>
+                <!-- <form class="detail-content__review-button" action="/review" method="post">
+                    @csrf
+                    <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                    <button class="detail-content__review-button-submit">口コミを投稿する</button>
+                </form> -->
+            @endcan
+        @endisset
     </div>
 
     <div class="reservation-content">

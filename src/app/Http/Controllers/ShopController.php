@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Shop;
 use App\Models\Favorite;
+use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationInputRequest;
 
@@ -50,7 +51,9 @@ class ShopController extends Controller
     public function detail(ReservationInputRequest $request){
         $shop_id=$request['shop_id'];
         $shop=Shop::find($shop_id);
-        return view ('detail', compact('shop'));
+        $user_id=Auth::id();
+        $review=Review::ShopSearch($shop_id)->UserSearch($user_id)->first();
+        return view ('detail', compact('shop', 'review'));
     }
 
 // 店舗検索処理
@@ -75,15 +78,15 @@ class ShopController extends Controller
             return view ('index', compact('shops', 'favorites'));
         // 評価高い順
         }else if($request['sort']==="2"){
-            $shops=Shop::with('evaluation')->get();
+            $shops=Shop::with('review')->get();
             $scores=[];
             foreach($shops as $shop){
                 $score=0;
-                if($shop->evaluation->count()!==0){
-                    foreach($shop->evaluation as $evaluation){
-                        $score+=$evaluation->evaluation_general;
+                if($shop->review->count()!==0){
+                    foreach($shop->review as $review){
+                        $score+=$review->score;
                     }
-                    $score=$score/$shop->evaluation->count();
+                    $score=$score/$shop->review->count();
                     $scores[$shop->id]=$score;
                 }else{
                     $scores[$shop->id]=0;
@@ -95,15 +98,15 @@ class ShopController extends Controller
             return view ('index', compact('shops', 'favorites'));
         // 評価低い順
         }else{
-            $shops=Shop::with('evaluation')->get();
+            $shops=Shop::with('review')->get();
             $scores=[];
             foreach($shops as $shop){
                 $score=0;
-                if($shop->evaluation->count()!==0){
-                    foreach($shop->evaluation as $evaluation){
-                        $score+=$evaluation->evaluation_general;
+                if($shop->review->count()!==0){
+                    foreach($shop->review as $review){
+                        $score+=$review->score;
                     }
-                    $score=$score/$shop->evaluation->count();
+                    $score=$score/$shop->review->count();
                     $scores[$shop->id]=$score;
                 }else{
                     $scores[$shop->id]=10;
@@ -115,6 +118,4 @@ class ShopController extends Controller
             return view ('index', compact('shops', 'favorites'));
         }
     }
-
-    
 }

@@ -10,12 +10,16 @@
     width: 50%;
 }
 
+.detail-content__shop-name{
+    font-size: clamp(1.5rem, 1.324rem + 0.88vw, 2rem);
+}
+
 .detail-content__back{
     text-decoration: none;
     color: #000;
     border-radius: 5px;
     box-shadow: 1px 1px 3px #808080;
-    font-size: 16px;
+    font-size: clamp(0.625rem, 0.493rem + 0.66vw, 1rem);
     padding: 2px 7px;
     vertical-align: middle;
     margin-right: 5px;
@@ -23,29 +27,29 @@
 
 .detail-content__shop-img img{
     width: 100%;
-    margin-bottom: 20px;
 }
 
 .detail-content__shop-tag,
 .detail-content__shop-introduction{
-    font-size: 16px;
+    font-size: clamp(0.625rem, 0.493rem + 0.66vw, 1rem);
     margin-bottom: 20px;
 }
 
 .reservation-content {
     position: absolute;
-    top: 3%;
+    top: 10%;
     left: 55%;
     background-color: #305dff;
     border-radius: 5px;
     width: 35%;
     max-width: 500px;
     text-align: left;
+    padding-top: 10px;
 }
 
 .reservation-content__header{
     color: #fff;
-    font-size: 20px;
+    font-size: clamp(1.125rem, 0.993rem + 0.66vw, 1.5rem);
 }
 
 .reservation-content__header{
@@ -72,10 +76,11 @@
 .reservation-content__date input{
     width: 100%;
     border-radius: 3px;
-    padding: 3px 5px;
+    padding: 7px;
     border: none;
     outline: none;
     cursor: pointer;
+    font-size: clamp(0.625rem, 0.493rem + 0.66vw, 1rem);
 }
 
 .reservation-content__date input[type=date]::-webkit-calendar-picker-indicator{
@@ -100,11 +105,12 @@
 .reservation-content__num select{
     width: 100%;
     border-radius: 3px;
-    padding: 3px 5px;
+    padding: 7px;
     border: none;
     outline: none;
     appearance: none;
     cursor: pointer;
+    font-size: clamp(0.625rem, 0.493rem + 0.66vw, 1rem);
 }
 
 .reservation-content__select-icon {
@@ -119,7 +125,7 @@
 
 .reservation-content__error {
     color: #ff0000;
-    font-size: 14px;
+    font-size: clamp(0.625rem, 0.493rem + 0.66vw, 1rem);
     margin: 0;
     height: 20px;
     margin-left: 20px;
@@ -147,7 +153,7 @@
 .reservation-content__result td {
     color: #fff;
     font-weight: 400;
-    font-size: 14px;
+    font-size: clamp(0.625rem, 0.493rem + 0.66vw, 1rem);
 }
 
 .reservation-content__result th{
@@ -166,7 +172,117 @@
     background-color: #0738ff;
     width: 100%;
     padding: 15px;
+    font-size: clamp(0.625rem, 0.493rem + 0.66vw, 1rem);
 }
+
+
+.detail-content__shop-img--user img{
+    height: clamp(6.25rem, 3.613rem + 13.19vw, 13.75rem);
+    object-fit: cover;
+}
+
+.detail-content__review{
+    width: 100%;
+}
+
+.detail-content__review-form{
+    width: 100%;
+    border-bottom: 1px solid #CACACA;
+    margin: 20px auto;
+}
+
+.detail-content__review-form-submit{
+    width: 100%;
+    background-color: #4d7fff;
+    color: #fff;
+    text-align: center;
+    border: none;
+    border-radius: 1px;
+    padding: 10px;
+    font-size: clamp(0.625rem, 0.493rem + 0.66vw, 1rem);
+    cursor: pointer;
+    margin: 30px auto;
+}
+
+.detail-content__review-content{
+    width: 110%;
+    border-bottom: 1px solid #CACACA;
+    margin-bottom: 50px;
+    padding-right: 10%;
+    font-size: clamp(0.625rem, 0.493rem + 0.66vw, 1rem);
+}
+
+.detail-content__review-buttons{
+    display: flex;
+    justify-content: right;
+    margin-bottom: 20px;
+}
+
+.detail-content__review-button-submit{
+    font-size: clamp(0.625rem, 0.493rem + 0.66vw, 1rem);
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+.star-icon{
+    color: #D8D8D8;
+    font-size: clamp(1.25rem, 1.03rem + 1.1vw, 1.875rem);
+}
+
+.detail-content__review-comment{
+    margin: 0 0 20px;
+}
+
+.detail-content__review-send{
+    font-size: clamp(0.625rem, 0.493rem + 0.66vw, 1rem);
+}
+
+/* セッションデザイン */
+.session {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    text-align: center;
+    background-color: #ff5656;
+    font-size: clamp(1rem, 0.824rem + 0.88vw, 1.5rem);
+    font-weight: bold;
+    color: #fff;
+    animation: fadeOut 5s;
+    opacity: 0;
+    z-index: -1;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    10% {
+        opacity: 1;
+        z-index: 1;
+    }
+
+    90% {
+        opacity: 1;
+        z-index: 1;
+    }
+
+    99% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    100% {
+        z-index: -1;
+    }
+}
+
+
+
 
 /* レスポンシブデザイン */
 @media screen and (max-width: 768px) {
@@ -175,38 +291,29 @@
         width: 70%;
     }
 
-    .detail-content__shop-name{
-        font-size: 3vw;
-    }
-
     .detail-content__shop-img img{
         margin-bottom: 3%;
     }
 
     .detail-content__shop-tag,
     .detail-content__shop-introduction{
-        font-size: 2vw;
         margin: 3% 0;
-    }
-
-    .detail-content__back{
-        font-size: 2vw;
     }
 
     .reservation-content{
         position: unset;
-        margin: 0 auto;
+        margin: 20px auto;
         width: 70%;
         padding-top: 5px;
-    }
-
-    .reservation-content__header{
-        font-size: 2vw;
     }
 
     .reservation-content__calender-icon,
     .reservation-content__select-icon{
         top: 50%;
+    }
+
+    .reservation-content__select-icon{
+        left: 90%;
     }
 
     .reservation-content__table-wrapper{
@@ -221,6 +328,10 @@
 
     .reservation-content__error{
         height: 3vw;
-        font-size: 2vw;
+    }
+
+    .detail-content__review-content{
+        width: 100%;
+        padding-right: 0;
     }
 }

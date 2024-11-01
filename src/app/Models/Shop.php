@@ -34,6 +34,10 @@ class Shop extends Model
         return $this->hasMany(Evaluation::class);
     }
 
+    public function review(){
+        return $this->hasMany(Review::class);
+    }
+
     public function scopeAreaSearch($query, $area_id){
         if (!empty($area_id)) {
         $query->where('area_id', $area_id);

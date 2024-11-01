@@ -44,9 +44,8 @@ Route::middleware('verified')->group(function () {
     Route::get('/credit{amount}',[PaymentController::class, 'credit']);
     Route::post('/payment',[PaymentController::class, 'payment']);
 
-    // 追加
+
     Route::get('/sort',[ShopController::class, 'sort']);
-    Route::get('/review/{shop_id}',[ShopController::class, 'review']);
 });
 
 // 管理者
@@ -72,9 +71,9 @@ Route::group(['middleware' => ['auth','can:representative']], function () {
     Route::post('/reservation/confirm',[QRController::class, 'visit']);
 });
 
-// 追加
 // 利用者
 Route::group(['middleware' => ['auth','can:user']], function () {
-    Route::get('/review/{shop_id}',[ReviewController::class, 'review']);
+    Route::get('/review{shop_id}',[ReviewController::class, 'review']);
     Route::post('/review/send' ,[ReviewController::class, 'reviewSend']);
+    Route::post('review/delete',[ReviewController::class, 'reviewDelete']);
 });
