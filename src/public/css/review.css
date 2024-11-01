@@ -62,6 +62,7 @@ body,
 .review-shop-info__buttons {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .review-shop-info__form-submit {
@@ -74,13 +75,18 @@ body,
     font-size: clamp(0.5rem, 0.412rem + 0.44vw, 0.75rem);
 }
 
-.review-shop-info__fav-submit {
+.review-shop-info__fav-button{
+    background-color: transparent;
     border: none;
-    background-color: #fff;
-    width: 38px;
-    height: 30px;
-    cursor: pointer;
-    padding: 0;
+}
+
+.review-shop-info__fav-icon{
+    color: #eeeeee;
+    font-size: clamp(1.875rem, 1.435rem + 2.2vw, 3.125rem);
+}
+
+.favorite-on{
+    color: #ff0000;
 }
 
 .review-shop-info__fav button img {

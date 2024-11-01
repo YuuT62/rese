@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
+<link rel="stylesheet" href="{{ asset('css/review.css') }}">
 @endsection
 
 @section('header')
@@ -110,28 +111,17 @@
                                 <form class="shop-info__button--detail" action="/detail/{{$favorite->shop->id}}" method="get">
                                     <button class="shop-info__button--detail-submit" type="submit">詳しくみる</button>
                                 </form>
-
-
-                                @if($favorite->status===1)
-                                    <form class="shop-info__button--fav" action="/mypage/favorite/true" method="post">
-                                        @csrf
-                                        <input type="hidden" name="favorite_id" value="{{ $favorite->id }}">
-                                        <input type="hidden" name="shop_id" value="{{ $favorite->shop_id }}" >
-                                        <button class="shop-info__button--fav-submit" type="submit">
-                                                <img src="{{ asset('storage/icon/fav_on_icon.png') }}" alt="fav_on_icon">
-                                        </button>
-                                    </form>
-
-                                @else
-                                    <form class="shop-info__button--fav" action="/mypage/favorite/false" method="post">
-                                        @csrf
-                                        <input type="hidden" name="favorite_id" value="{{ $favorite->id }}">
-                                        <input type="hidden" name="shop_id" value="{{ $favorite->shop_id }}" >
-                                        <button class="shop-info__button--fav-submit" type="submit">
-                                                <img src="{{ asset('storage/icon/fav_off_icon.png') }}" alt="fav_off_icon">
-                                        </button>
-                                    </form>
-                                @endif
+                                <div class="review-shop-info__fav">
+                                    @if (!$favorite->shop->isFavoriteBy(Auth::user()))
+                                    <button class="review-shop-info__fav-button favorite-toggle" data-shop-id="{{ $favorite->shop_id }}" type="button">
+                                        <span class="material-symbols-outlined review-shop-info__fav-icon" id="{{$$favorite-shop->id}}">favorite</span>
+                                    </button>
+                                    @else
+                                    <button class="review-shop-info__fav-button favorite-toggle" data-shop-id="{{ $favorite->shop_id }}" type="button">
+                                        <span class="material-symbols-outlined review-shop-info__fav-icon favorite-on" id="{{$favorite->shop_id}}">favorite</span>
+                                    </button>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -140,4 +130,34 @@
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // いいねボタン
+    $(function () {
+        let favorite = $('.favorite-toggle');
+        favorite.on('click', function () {
+            let $this = $(this);
+            let favoriteShopId = $this.data('shop-id');
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/favorite',
+                method: 'POST',
+                data: {
+                    'shop_id': favoriteShopId
+                },
+            })
+            //通信成功した時の処理
+            .done(function (data) {
+            $('#'+favoriteShopId).toggleClass('favorite-on');
+            })
+            // 通信失敗した時の処理
+            .fail(function () {
+            console.log('fail');
+            });
+        });
+    });
+</script>
 @endsection

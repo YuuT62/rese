@@ -24,12 +24,13 @@ use App\Http\Controllers\ReviewController;
 Route::middleware('verified')->group(function () {
 
     Route::get('/', [ShopController::class, 'index']);
-    Route::post('/', [ShopController::class, 'favorite']);
+    // Route::post('/', [ShopController::class, 'favorite']);
     Route::get('/search', [ShopController::class, 'search']);
     Route::get('/detail/{shop_id}',[ShopController::class, 'detail']);
     Route::get('/mypage',[UserController::class, 'mypage']);
-    Route::post('/mypage/favorite/true',[UserController::class, 'favoriteTrue']);
-    Route::post('/mypage/favorite/false',[UserController::class, 'favoriteFalse']);
+    // Route::post('/mypage/favorite/true',[UserController::class, 'favoriteTrue']);
+    // Route::post('/mypage/favorite/false',[UserController::class, 'favoriteFalse']);
+    Route::post('/favorite',[ShopController::class, 'favorite'])->name('shop.favorite');
     Route::get('/thanks',[UserController::class, 'thanks']);
     Route::post('/reservation/add',[ReservationController::class, 'add']);
     Route::post('/reservation/delete',[ReservationController::class, 'delete']);

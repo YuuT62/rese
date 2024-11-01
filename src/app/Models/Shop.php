@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Favorite;
 
 class Shop extends Model
 {
@@ -60,5 +61,9 @@ class Shop extends Model
         if(!empty($user_id)){
             $query->where('user_id', $user_id);
         }
+    }
+
+    public function isFavoriteBy($user): bool {
+        return Favorite::where('user_id', $user->id)->where('shop_id', $this->id)->first() !==null;
     }
 }

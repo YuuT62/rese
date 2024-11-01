@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,1,-50..200&icon_names=star_rate" />
+
 <link rel="stylesheet" href="{{ asset('css/review.css') }}">
 @endsection
 
@@ -19,17 +19,15 @@
                         <button class="review-shop-info__form-submit" type="submit">詳しくみる</button>
                     </form>
                     <div class="review-shop-info__fav">
-                        <button class="review-shop-info__fav-submit" type="submit">
-                            @isset($favorite)
-                                @if($favorite->status)
-                                    <img src="{{ asset('storage/icon/fav_on_icon.png') }}" alt="fav_on_icon">
-                                @else
-                                    <img src="{{ asset('storage/icon/fav_off_icon.png') }}" alt="fav_off_icon">
-                                @endif
-                            @else
-                            <img src="{{ asset('storage/icon/fav_off_icon.png') }}" alt="fav_off_icon">
-                            @endisset
+                        @if (!$shop->isFavoriteBy(Auth::user()))
+                        <button class="review-shop-info__fav-button favorite-toggle" data-shop-id="{{ $shop->id }}" type="button">
+                            <span class="material-symbols-outlined review-shop-info__fav-icon">favorite</span>
                         </button>
+                        @else
+                        <button class="review-shop-info__fav-button favorite-toggle" data-shop-id="{{ $shop->id }}" type="button">
+                            <span class="material-symbols-outlined review-shop-info__fav-icon favorite-on">favorite</span>
+                        </button>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -81,6 +79,7 @@
         </div>
     </form>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     // 評価用星
     function scoreChange(){
@@ -119,5 +118,33 @@
     function drop(){
         document.getElementById('img-label').innerHTML=document.getElementById('img').files[0]['name'];
     }
+
+    // いいねボタン
+    $(function () {
+        let favorite = $('.favorite-toggle');
+        favorite.on('click', function () {
+            let $this = $(this);
+            let favoriteShopId = $this.data('shop-id');
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/favorite',
+                method: 'POST',
+                data: {
+                    'shop_id': favoriteShopId
+                },
+            })
+            //通信成功した時の処理
+            .done(function (data) {
+            $('.review-shop-info__fav-icon').toggleClass('favorite-on');
+            })
+            // 通信失敗した時の処理
+            .fail(function () {
+            console.log('fail');
+            });
+        });
+    });
 </script>
+
 @endsection

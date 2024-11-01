@@ -19,32 +19,19 @@ class ShopController extends Controller
         return view ('index', compact('shops', 'favorites'));
     }
 
-// 店舗お気に入り処理
     public function favorite(Request $request){
-        $user_id=Auth::id();
-        $shop_id=$request['shop_id'];
-        $favorite=Favorite::UserSearch($user_id)->ShopSearch($shop_id)->first();
-        if(empty($favorite)){
-            Favorite::create([
-                "user_id" => $user_id,
-                "shop_id" => $shop_id,
-                "status" => true
-            ]);
+        $user_id = Auth::id();
+        $shop_id = $request->shop_id;
+        $already_favorite = Favorite::where('user_id', $user_id)->where('shop_id', $shop_id)->exists();
+
+        if (!$already_favorite) {
+            $favorite = new Favorite;
+            $favorite->shop_id = $shop_id;
+            $favorite->user_id = $user_id;
+            $favorite->save();
+        } else {
+            Favorite::UserSearch($user_id)->ShopSearch($shop_id)->delete();
         }
-        elseif($favorite->status){
-            $favorite->update([
-                "user_id" => $user_id,
-                "shop_id" => $shop_id,
-                "status" => false
-            ]);
-        }else{
-            $favorite->update([
-                "user_id" => $user_id,
-                "shop_id" => $shop_id,
-                "status" => true
-            ]);
-        }
-        return redirect('/');
     }
 
 // 店舗詳細表示
