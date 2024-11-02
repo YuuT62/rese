@@ -18,8 +18,8 @@
                 <div class="review-content__user">
                     {{ $review->user->name }}さん
                 </div>
-                @if(Auth::id() === $review->user_id)
                 <div class="review-content__buttons">
+                    @if(Auth::id() === $review->user_id)
                     <form class="review-content__button-form" action="/review/edit" method="get">
                         <input type="hidden" name="review_id" value="{{ $review->id }}">
                         <button class="review-content__button-form-submit">口コミを編集</button>
@@ -29,8 +29,15 @@
                         <input type="hidden" name="review_id" value="{{ $review->id }}">
                         <button class="review-content__button-form-submit">口コミを削除</button>
                     </form>
+                    @endif
+                    @can('admin')
+                    <form class="review-content__button-form" action="/review/management/delete" method="post">
+                        @csrf
+                        <input type="hidden" name="review_id" value="{{ $review->id }}">
+                        <button class="review-content__button-form-submit">口コミを削除</button>
+                    </form>
+                    @endcan
                 </div>
-                @endif
             </div>
             @if($review->review_img !== null)
             <div class="review-content__img">

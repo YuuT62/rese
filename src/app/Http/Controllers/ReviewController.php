@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Shop;
 use App\Models\Favorite;
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ReviewRequest;
 
@@ -59,7 +60,15 @@ class ReviewController extends Controller
         $shop_id=$review->shop_id;
         $review->delete();
 
-        return redirect('/detail/'.$shop_id);
+        $user=User::with('role')->find(Auth::id());
+        if($user->role->score === 100){
+            $shop=Shop::find($shop_id)->first();
+            $reviews=Review::ShopSearch($shop_id)->with('user')->get();
+
+            return view('review_list', compact('shop', 'reviews'));
+        }else{
+            return redirect('/detail/'.$shop_id);
+        }
     }
 
     // 口コミ一覧

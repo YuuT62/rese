@@ -64,7 +64,7 @@
                 {{ $shop->overview }}
             </p>
             @canany(['admin', 'representative'])
-                <form class="detail-content__review-form" action="/reviews/{{ $shop->id }}" method="get">
+                <form class="detail-content__review-form" action="/review/list{{ $shop->id }}" method="get">
                     <button class="detail-content__review-form-submit" type="submit">全ての口コミ情報</button>
                 </form>
             @endcanany
