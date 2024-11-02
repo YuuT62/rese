@@ -54,8 +54,8 @@ class ShopController extends Controller
         return view ('index', compact('area_id','genre_id' ,'keyword' ,'shops', 'favorites'));
     }
 
-// 追加
-    // 店舗一覧ソート
+
+// 店舗一覧ソート
     public function sort(Request $request){
         $user_id=Auth::id();
         $favorites=Favorite::UserSearch($user_id)->get();

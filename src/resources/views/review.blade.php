@@ -38,8 +38,9 @@
         @csrf
         <h2 class="review-form__header">体験を評価してください</h2>
         <div class="review-form__score">
+            <input type="hidden" value="{{ old('score') }}" id="old">
             @for($i=1; $i<=5; $i++)
-            <input type="radio" name="score" id="{{ $i }}" value="{{ $i }}" style="display:none" onchange="scoreChange()">
+            <input type="radio" name="score" id="{{ $i }}" value="{{ $i }}" style="display:none" onchange="scoreChange()" @if(old('score') == $i) checked @endif>
             <label for="{{ $i }}">
                 <span class="material-symbols-outlined star-icon">star_rate</span>
             </label>
@@ -98,13 +99,26 @@
         }
     }
 
+    window.onload = function(){
+        let score = document.getElementsByName('score');
+        let len = score.length;
+        let old = document.getElementById('old').value;
+        let icon = document.getElementsByClassName('star-icon');
+        for(let i = 0; i < len; i++){
+            for(let m = 0; m < old; m++){
+                icon[m].style.color="#305dff";
+            }
+        }
+    }
+
     // テキストカウンター
     const textarea = document.getElementById("textarea");
     const charCounter = document.getElementById("counter");
+    let currentLength = textarea.value.length;
     const maxLength = 400;
-    charCounter.textContent = `0`
+    charCounter.textContent = `${currentLength}`
     textarea.addEventListener("input", () => {
-    const currentLength = textarea.value.length
+    currentLength = textarea.value.length
     charCounter.textContent = `${currentLength}`
 
     if (currentLength > maxLength) {

@@ -25,21 +25,18 @@
                 {{ $shop->overview }}
             </p>
             <div class="detail-content__review">
-                <form class="detail-content__review-form" action="/reviews/{{ $shop->id }}" method="get">
+                <form class="detail-content__review-form" action="/review/list{{ $shop->id }}" method="get">
                     <button class="detail-content__review-form-submit" type="submit">全ての口コミ情報</button>
                 </form>
                 <div class="detail-content__review-content">
                     <div class="detail-content__review-buttons">
-                        <form class="detail-content__review-button" action="/review/edit">
-                            @csrf
-                            <input type="hidden" name="user_id" value="{{ $review->user_id }}">
-                            <input type="hidden" name="shop_id" value="{{ $review->shop_id}}">
+                        <form class="detail-content__review-button" action="/review/edit" method="get">
+                            <input type="hidden" name="review_id" value="{{ $review->id }}">
                             <button class="detail-content__review-button-submit">口コミを編集</button>
                         </form>
                         <form class="detail-content__review-button" action="/review/delete" method="post">
                             @csrf
-                            <input type="hidden" name="user_id" value="{{ $review->user_id }}">
-                            <input type="hidden" name="shop_id" value="{{ $review->shop_id}}">
+                            <input type="hidden" name="review_id" value="{{ $review->id }}">
                             <button class="detail-content__review-button-submit">口コミを削除</button>
                         </form>
                     </div>
@@ -73,11 +70,6 @@
             @endcanany
             @can('user')
                 <a class="detail-content__review-send" href="/review{{$shop->id}}" style="color:#000">口コミを投稿する</a>
-                <!-- <form class="detail-content__review-button" action="/review" method="post">
-                    @csrf
-                    <input type="hidden" name="shop_id" value="{{ $shop->id }}">
-                    <button class="detail-content__review-button-submit">口コミを投稿する</button>
-                </form> -->
             @endcan
         @endisset
     </div>

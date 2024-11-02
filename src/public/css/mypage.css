@@ -167,6 +167,7 @@
 .shop-info__button {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .shop-info__button--detail button {

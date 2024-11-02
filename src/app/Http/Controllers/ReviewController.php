@@ -36,8 +36,12 @@ class ReviewController extends Controller
         if(isset($review)){
             return redirect('/detail/'.$shop_id)->with('messages','すでに口コミが投稿されています');
         }else{
-            $path=Storage::disk('public')->putFile('review-img', $request->file('review_img'));
-            $full_path = Storage::disk('public')->url($path);
+            if($request->file('review_img') !== null){
+                $path=Storage::disk('public')->putFile('review-img', $request->file('review_img'));
+                $full_path = Storage::disk('public')->url($path);
+            }else{
+                $full_path=null;
+            }
             Review::create([
                 "user_id" => $user_id,
                 "shop_id" => $shop_id,
@@ -49,11 +53,52 @@ class ReviewController extends Controller
         }
     }
 
+    // 口コミ削除
     public function reviewDelete(Request $request){
-        $user_id=$request['user_id'];
-        $shop_id=$request['shop_id'];
-        Review::ShopSearch($shop_id)->UserSearch($user_id)->delete();
+        $review=Review::find($request['review_id']);
+        $shop_id=$review->shop_id;
+        $review->delete();
 
         return redirect('/detail/'.$shop_id);
+    }
+
+    // 口コミ一覧
+    public function reviewList(Request $request){
+        $shop_id=$request['shop_id'];
+        $shop=Shop::find($shop_id)->first();
+        $reviews=Review::ShopSearch($shop_id)->with('user')->get();
+
+        return view('review_list', compact('shop', 'reviews'));
+    }
+
+    public function reviewEdit(Request $request){
+        $user_id=Auth::id();
+        $review=Review::with('shop')->find($request['review_id']);
+
+        if($user_id === $review->user_id){
+            return view('review_edit', compact('review'));
+        }else{
+            return redirect('/');
+        }
+
+    }
+
+    public function reviewUpdate(ReviewRequest $request){
+        $review=Review::find($request['review_id']);
+        if($request->file('review_img') !== null){
+                $path=Storage::disk('public')->putFile('review-img', $request->file('review_img'));
+                $full_path = Storage::disk('public')->url($path);
+        }else{
+            $full_path=null;
+        }
+        $review->update([
+            "user_id" => $review->user_id,
+            "shop_id" => $review->shop_id,
+            "score" => $request['score'],
+            "comment" => $request['comment'],
+            "review_img" => $full_path,
+        ]);
+
+        return redirect('/detail/'.$review->shop_id);
     }
 }

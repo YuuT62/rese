@@ -17,6 +17,14 @@ class Review extends Model
         'review_img',
     ];
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function shop(){
+        return $this->belongsTo(Shop::class);
+    }
+
     public function scopeUserSearch($query, $user_id){
         if(!empty($user_id)){
             $query->where('user_id', $user_id);

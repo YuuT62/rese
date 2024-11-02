@@ -24,12 +24,9 @@ use App\Http\Controllers\ReviewController;
 Route::middleware('verified')->group(function () {
 
     Route::get('/', [ShopController::class, 'index']);
-    // Route::post('/', [ShopController::class, 'favorite']);
     Route::get('/search', [ShopController::class, 'search']);
     Route::get('/detail/{shop_id}',[ShopController::class, 'detail']);
     Route::get('/mypage',[UserController::class, 'mypage']);
-    // Route::post('/mypage/favorite/true',[UserController::class, 'favoriteTrue']);
-    // Route::post('/mypage/favorite/false',[UserController::class, 'favoriteFalse']);
     Route::post('/favorite',[ShopController::class, 'favorite'])->name('shop.favorite');
     Route::get('/thanks',[UserController::class, 'thanks']);
     Route::post('/reservation/add',[ReservationController::class, 'add']);
@@ -47,6 +44,7 @@ Route::middleware('verified')->group(function () {
 
 
     Route::get('/sort',[ShopController::class, 'sort']);
+    Route::get('/review/list{shop_id}',[ReviewController::class, 'reviewList']);
 });
 
 // 管理者
@@ -77,4 +75,6 @@ Route::group(['middleware' => ['auth','can:user']], function () {
     Route::get('/review{shop_id}',[ReviewController::class, 'review']);
     Route::post('/review/send' ,[ReviewController::class, 'reviewSend']);
     Route::post('review/delete',[ReviewController::class, 'reviewDelete']);
+    Route::get('review/edit',[ReviewController::class, 'reviewEdit']);
+    Route::post('review/update',[ReviewController::class, 'reviewUpdate']);
 });

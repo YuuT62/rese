@@ -52,6 +52,7 @@ body,
 .shop-info__buttons{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .shop-info__button button{
