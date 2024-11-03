@@ -16,7 +16,7 @@
     <div class="detail-content">
         @isset($review)
             <div class="detail-content__shop-img detail-content__shop-img--user">
-                <img src="{{ asset('storage/shop-img/'.$shop->img) }}" alt="shop-img">
+                <img src="{{ $shop->img }}" alt="shop-img">
             </div>
             <p class="detail-content__shop-tag">
                 #{{ $shop->area->area }} #{{ $shop->genre->genre}}
@@ -55,7 +55,7 @@
                 {{ $shop->shop_name }}
             </h1>
             <div class="detail-content__shop-img">
-                <img src="{{ asset('storage/shop-img/'.$shop->img) }}" alt="shop-img">
+                <img src="{{ $shop->img }}" alt="shop-img">
             </div>
             <p class="detail-content__shop-tag">
                 #{{ $shop->area->area }} #{{ $shop->genre->genre}}

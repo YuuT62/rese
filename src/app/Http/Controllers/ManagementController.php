@@ -10,7 +10,9 @@ use App\Models\Reservation;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendEmail;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\CSVRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class ManagementController extends Controller
 {
@@ -100,8 +102,8 @@ class ManagementController extends Controller
     }
 
     public function createShop(Request $request){
-        $file_name=$request->file('shop_img')->getClientOriginalName();
-        $img_path=$request->file('shop_img')->storeAs('public/shop-img', $file_name);
+        $path=Storage::disk('public')->putFile('shop-img', $request->file('shop_img'));
+        $full_path = Storage::disk('public')->url($path);
         $user_id=Auth::id();
 
         Shop::create([
@@ -110,7 +112,7 @@ class ManagementController extends Controller
             'genre_id' => $request['genre_id'],
             'area_id' => $request['area_id'],
             'overview' => $request['overview'],
-            'img' => $file_name,
+            'img' => $full_path,
         ]);
 
         return view('completion');
@@ -141,5 +143,37 @@ class ManagementController extends Controller
         ]);
         $amount=$request['amount'];
         return view('bill_qrcode', compact('amount'));
+    }
+
+    public function csvImport(CSVRequest $request){
+        $shop_data=[
+            "shop_name"=>null,
+            "genre"=>null,
+            "area"=>null,
+            "overview"=>null,
+            "img"=>null
+        ];
+        // リクエストからファイルを取得
+        $file = $request->file('csv_file');
+        $path = $file->getRealPath();
+        // ファイルを開く
+        $fp = fopen($path, 'r');
+        // 1行ずつ読み込む
+        while (($data = fgetcsv($fp)) !== FALSE) {
+            switch($data[0]){
+                case 'name':
+                    $shop_data['shop_name']=$data[1];
+                    break;
+                case 'genre':
+                    $shop_data['genre']=$data[1];
+                case 'area':
+                    $shop_data['area']=$data[1];
+                case 'overview':
+                    $shop_data['overview']=$data[1];
+                case 'img':
+                    $shop_data['img']=$data[1];
+            }
+        }
+        return view('csv_import',compact('shop_data'));
     }
 }

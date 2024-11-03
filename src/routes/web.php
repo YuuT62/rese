@@ -54,6 +54,7 @@ Route::group(['middleware' => ['auth','can:admin']], function () {
     Route::get('/email',[ManagementController::class, 'email']);
     Route::post('/email',[ManagementController::class, 'send']);
     Route::post('review/management/delete',[ReviewController::class, 'reviewDelete']);
+    Route::post('/import',[ManagementController::class, 'csvImport']);
 });
 
 // 店舗代表者

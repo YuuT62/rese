@@ -77,7 +77,7 @@
     @foreach($shops as $shop)
         <div class="shop-info">
             <div class="shop-info__img">
-                <img src="{{ asset('storage/shop-img/'.$shop->img) }}" alt="shop-img">
+                <img src="{{ $shop->img }}" alt="shop-img">
             </div>
             <div class="shop-info__detail">
                 <h2>{{ $shop->shop_name }}</h2>

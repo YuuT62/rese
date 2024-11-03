@@ -1,13 +1,38 @@
+body,
+.header {
+    background-color: #eeeeee;
+}
+
 .header__inner {
     display: flex;
 }
 
 .management-header{
+    width: 100%;
     display: flex;
+    justify-content: right;
+    flex-wrap: wrap;
 }
 
 .management-header__button{
+    margin: 5px;
+    display: flex;
+    align-items: center;
+}
+.management-header__button--csv{
+    background-color: #fff;
+    border-radius: 5px;
+    height: fit-content;
+}
+.management-header__button-label{
+    width: 50vw;
+    max-width: 160px;
+    min-width: 70px;
     margin-right: 5px;
+    font-size: clamp(0.5rem, 0.324rem + 0.88vw, 1rem);
+    text-align: center;
+    border-radius: 5px;
+    padding: 7px;
 }
 .management-header__button-submit,
 .management-content-table__form-submit {
@@ -21,6 +46,9 @@
     width: 100%;
     max-width: 150px;
     font-size: clamp(0.5rem, 0.324rem + 0.88vw, 1rem);
+}
+.management-header__button-submit--csv{
+    margin-right: 0;
 }
 
 .management-content-table__form-submit{
@@ -37,17 +65,6 @@
 .management-content__header{
     font-size: clamp(1rem, 0.648rem + 1.76vw, 2rem);
 }
-
-/* .management-content__back {
-    text-decoration: none;
-    color: #000;
-    border-radius: 5px;
-    box-shadow: 1px 1px 3px #808080;
-    font-size: 16px;
-    padding: 2px 7px;
-    vertical-align: middle;
-    margin-right: 5px;
-} */
 
 .management-content-table {
     margin: 0 auto;
@@ -90,11 +107,58 @@ li:last-of-type {
     margin-right: 0;
 }
 
+/* セッションデザイン */
+.session {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    text-align: center;
+    background-color: #ff5656;
+    font-size: clamp(1rem, 0.824rem + 0.88vw, 1.5rem);
+    font-weight: bold;
+    color: #fff;
+    animation: fadeOut 5s;
+    opacity: 0;
+    z-index: -1;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    10% {
+        opacity: 1;
+        z-index: 1;
+    }
+
+    90% {
+        opacity: 1;
+        z-index: 1;
+    }
+
+    99% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    100% {
+        z-index: -1;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .management-header__button-submit,
     .management-content-table__form-submit {
         margin-right: 5px;
         padding: 5px 10px;
+    }
+
+    .management-header__button-submit--csv{
+        margin-right: 0;
     }
 
     .management-content-table__form-submit {

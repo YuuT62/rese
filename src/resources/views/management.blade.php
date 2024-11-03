@@ -13,6 +13,17 @@
     <form class="management-header__button" action="/email" method="get">
         <button class="management-header__button-submit" type="submit">メール</button>
     </form>
+    <form class="management-header__button management-header__button--csv" action="/import" method="post" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="csv_file" id="csv" style="display:none" onchange="drop()">
+        <label class="management-header__button-label"  for="csv" id="csvLabel">csvフィアルを選択</label>
+        <button class="management-header__button-submit management-header__button-submit--csv" type="submit">インポート</button>
+        @error('csv_file')
+            <div class="session">
+            {{ $message }}
+            </div>
+        @enderror
+    </form>
     @endcan
     @can('representative')
     @cannot('admin')
@@ -75,4 +86,15 @@
     </table>
     <div class="management-content__pagination">{{ $shops->links('vendor.pagination.default') }}</div>
 </div>
+
+<script>
+    function drop(){
+        const file = document.getElementById('csv').files[0]['name'];
+        if(file.length<=10){
+            document.getElementById('csvLabel').innerHTML=document.getElementById('csv').files[0]['name'];
+        }else{
+            document.getElementById('csvLabel').innerHTML=document.getElementById('csv').files[0]['name'].substr(0,10)+'...';
+        }
+    }
+</script>
 @endsection

@@ -10,7 +10,7 @@
     <div class="review-shop">
         <h1 class="review-shop__header">今回のご利用はいかがでしたか？</h1>
         <div class="review-shop-info">
-            <img class="review-shop-info__img" src="{{ asset('storage/shop-img/'.$shop->img) }}" alt="shop-img">
+            <img class="review-shop-info__img" src="{{ $shop->img }}" alt="shop-img">
             <div class="review-shop-info__detail">
                 <h2 class="review-shop-info__detail-header">{{ $shop->shop_name }}</h2>
                 <p class="review-shop-info__detail-tag">#{{ $shop->area->area}} #{{ $shop->genre->genre }}</p>
@@ -64,8 +64,8 @@
         </div>
         <h2 class="review-form__header">画像の追加</h2>
         <div class="review-form__img">
-            <input class="review-form__img-input" name="review_img" type="file" id="img" onchange="drop()" value="{{ old('review_img')}}">
-            <label class="review-form__img-label" for="img" id="img-label">クリックして写真を追加</br>
+            <input class="review-form__img-input" name="review_img" type="file" id="img" onchange="drop()">
+            <label class="review-form__img-label" for="img" id="imgLabel">クリックして写真を追加</br>
             <span>またはドラッグアンドドロップ</span>
             </label>
         </div>
@@ -130,7 +130,7 @@
 
     // 画像追加ボックス
     function drop(){
-        document.getElementById('img-label').innerHTML=document.getElementById('img').files[0]['name'];
+        document.getElementById('imgLabel').innerHTML=document.getElementById('img').files[0]['name'];
     }
 
     // いいねボタン
