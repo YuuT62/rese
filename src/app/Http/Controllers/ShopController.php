@@ -65,15 +65,15 @@ class ShopController extends Controller
             return view ('index', compact('shops', 'favorites'));
         // 評価高い順
         }else if($request['sort']==="2"){
-            $shops=Shop::with('review')->get();
+            $shops=Shop::with('reviews')->get();
             $scores=[];
             foreach($shops as $shop){
                 $score=0;
-                if($shop->review->count()!==0){
-                    foreach($shop->review as $review){
+                if($shop->reviews->count()!==0){
+                    foreach($shop->reviews as $review){
                         $score+=$review->score;
                     }
-                    $score=$score/$shop->review->count();
+                    $score=$score/$shop->reviews->count();
                     $scores[$shop->id]=$score;
                 }else{
                     $scores[$shop->id]=0;
@@ -85,15 +85,15 @@ class ShopController extends Controller
             return view ('index', compact('shops', 'favorites'));
         // 評価低い順
         }else{
-            $shops=Shop::with('review')->get();
+            $shops=Shop::with('reviews')->get();
             $scores=[];
             foreach($shops as $shop){
                 $score=0;
-                if($shop->review->count()!==0){
-                    foreach($shop->review as $review){
+                if($shop->reviews->count()!==0){
+                    foreach($shop->reviews as $review){
                         $score+=$review->score;
                     }
-                    $score=$score/$shop->review->count();
+                    $score=$score/$shop->reviews->count();
                     $scores[$shop->id]=$score;
                 }else{
                     $scores[$shop->id]=10;

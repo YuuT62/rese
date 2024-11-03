@@ -6,6 +6,9 @@
     display: flex;
 }
 
+.management-header__button{
+    margin-right: 5px;
+}
 .management-header__button-submit,
 .management-content-table__form-submit {
     background-color: #305dff;
@@ -15,8 +18,9 @@
     color: #fff;
     padding: 7px 15px;
     cursor: pointer;
-    width: 100px;
-    font-size: 12px;
+    width: 100%;
+    max-width: 150px;
+    font-size: clamp(0.5rem, 0.324rem + 0.88vw, 1rem);
 }
 
 .management-content-table__form-submit{
@@ -31,16 +35,10 @@
 }
 
 .management-content__header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: clamp(1rem, 0.648rem + 1.76vw, 2rem);
 }
 
-.management-content__header{
-    font-size: 28px;
-}
-
-.management-content__back {
+/* .management-content__back {
     text-decoration: none;
     color: #000;
     border-radius: 5px;
@@ -49,7 +47,7 @@
     padding: 2px 7px;
     vertical-align: middle;
     margin-right: 5px;
-}
+} */
 
 .management-content-table {
     margin: 0 auto;
@@ -62,11 +60,12 @@
 
 .management-content-table__header {
     padding: 5px;
-    font-size: 20px;
+    font-size: clamp(0.5rem, 0.324rem + 0.88vw, 1rem);
 }
 
 .management-content-table__desc {
     padding: 10px 20px;
+    font-size: clamp(0.5rem, 0.324rem + 0.88vw, 1rem);
 }
 
 .management-content__pagination {
@@ -92,15 +91,8 @@ li:last-of-type {
 }
 
 @media screen and (max-width: 768px) {
-    .management-content__header {
-        font-size: clamp(16px, 3vw, 32px);
-    }
-
     .management-header__button-submit,
     .management-content-table__form-submit {
-        font-size: clamp(8px, 2vw, 12px);
-        max-width: 100px;
-        width: 18vw;
         margin-right: 5px;
         padding: 5px 10px;
     }
@@ -114,15 +106,9 @@ li:last-of-type {
 
     .management-content-table__header {
         padding: 1vw;
-        font-size: clamp(12px, 2.5vw, 20px);
-    }
-
-    .management-content__back {
-        font-size: 2vw;
     }
 
     .management-content-table__desc {
         padding: 10px 2vw;
-        font-size: clamp(10px, 2.5vw, 16px);
     }
 }

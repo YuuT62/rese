@@ -31,11 +31,11 @@ class Shop extends Model
         return $this->belongsTo(Area::class);
     }
 
-    public function evaluation(){
+    public function evaluations(){
         return $this->hasMany(Evaluation::class);
     }
 
-    public function review(){
+    public function reviews(){
         return $this->hasMany(Review::class);
     }
 
