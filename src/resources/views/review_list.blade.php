@@ -5,8 +5,6 @@
 @endsection
 
 @section('content')
-
-@section('content')
 <div class="review-list-wrapper">
     <div class="review-list__header">
         <h1>{{ $shop->shop_name }}</h1>

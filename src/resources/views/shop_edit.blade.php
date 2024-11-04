@@ -27,10 +27,20 @@
         <h2 class="edit-content__header">
             編集
         </h2>
-        <form class="edit-content__input" method="post" action="/update">
+        <form class="edit-content__input" method="post" action="/update" enctype="multipart/form-data">
             @csrf
             <div class="edit-content__name">
                 <input class="edit-content__name-input" type="text" name="shop_name" value="{{ $shop->shop_name }}">
+            </div>
+
+            <div class="edit-content__user">
+                <select class="edit-content__user-select" name="user_id">
+                    <option value="" disabled selected>なし</option>
+                    @foreach($users as $user)
+                    <option value="{{ $user->id }}" @if($user->id === $shop->user_id) selected @endif>{{ $user->name }}</option>
+                    @endforeach
+                </select>
+                <img class="edit-content__select-icon" src="{{ asset('storage/icon/select_icon.png') }}" alt="select_icon">
             </div>
 
             <div class="edit-content__area">
@@ -51,6 +61,10 @@
                     <option value="5" @if(5 === $shop->genre_id) selected @endif>ラーメン</option>
                 </select>
                 <img class="edit-content__select-icon" src="{{ asset('storage/icon/select_icon.png') }}" alt="select_icon">
+            </div>
+
+            <div class="edit-content__img">
+                <input class="edit-content__img-input" type="file" name="img">
             </div>
 
             <div class="edit-content__overview">

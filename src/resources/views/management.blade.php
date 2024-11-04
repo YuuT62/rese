@@ -23,6 +23,11 @@
             {{ $message }}
             </div>
         @enderror
+        @if(session('messages'))
+        <div class="session">
+            {{session('messages')}}
+        </div>
+        @endif
     </form>
     @endcan
     @can('representative')
@@ -68,7 +73,9 @@
                 </td>
                 @can('admin')
                 <td class="management-content-table__desc">
+                    @if($shop->user_id !== null)
                     {{ $shop->user->name }}
+                    @endif
                 </td>
                 @endcan
                 <td class="management-content-table__desc">

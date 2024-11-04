@@ -11,6 +11,8 @@
         店舗代表者を作成しました
         @elseif(parse_url(url()->previous(), PHP_URL_PATH) === "/shop/add")
         新規店舗を作成しました
+        @elseif(parse_url(url()->previous(), PHP_URL_PATH) === "/import")
+        新規店舗を作成しました
         @elseif(parse_url(url()->previous(), PHP_URL_PATH) === "/email")
         メールを送信しました
         @else

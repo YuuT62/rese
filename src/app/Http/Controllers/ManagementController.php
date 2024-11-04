@@ -10,7 +10,7 @@ use App\Models\Reservation;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendEmail;
 use App\Http\Requests\UserRequest;
-use App\Http\Requests\CSVRequest;
+use App\Http\Requests\CSVImportRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -82,16 +82,25 @@ class ManagementController extends Controller
     public function edit(Request $request){
         $shop_id=$request['shop_id'];
         $shop=Shop::find($shop_id);
-        return view ('shop_edit', compact('shop'));
+        $users=User::RoleSearch(2)->get();
+        return view ('shop_edit', compact('shop', 'users'));
     }
 
     public function update(Request $request){
         $shop_id=$request['shop_id'];
+        if($request->file('img') !== null){
+                $path=Storage::disk('public')->putFile('shop-img', $request->file('img'));
+                $full_path = Storage::disk('public')->url($path);
+        }else{
+            $full_path=null;
+        }
         Shop::find($shop_id)->update([
             "shop_name" => $request['shop_name'],
+            "user_id" => $request['user_id'],
             "genre_id" => $request['genre_id'],
             "area_id" => $request['area_id'],
-            "overview" => $request['overview']
+            "overview" => $request['overview'],
+            "img" => $full_path
         ]);
         return view('completion');
     }
@@ -145,13 +154,14 @@ class ManagementController extends Controller
         return view('bill_qrcode', compact('amount'));
     }
 
-    public function csvImport(CSVRequest $request){
+    // CSVファイルインポート
+    public function csvImport(CSVImportRequest $request){
         $shop_data=[
             "shop_name"=>null,
             "genre"=>null,
             "area"=>null,
             "overview"=>null,
-            "img"=>null
+            "url"=>null
         ];
         // リクエストからファイルを取得
         $file = $request->file('csv_file');
@@ -166,14 +176,97 @@ class ManagementController extends Controller
                     break;
                 case 'genre':
                     $shop_data['genre']=$data[1];
+                    break;
                 case 'area':
                     $shop_data['area']=$data[1];
+                    break;
                 case 'overview':
                     $shop_data['overview']=$data[1];
-                case 'img':
-                    $shop_data['img']=$data[1];
+                    break;
+                case 'url':
+                    $shop_data['url']=$data[1];
+                    break;
             }
         }
+
         return view('csv_import',compact('shop_data'));
+    }
+
+    // 新規店舗作成（CSVファイル）
+    public function csvSubmit(Request $request){
+
+        $shop_name=$request['shop_name'];
+        $genre=$request['genre'];
+        $area=$request['area'];
+        $overview=$request['overview'];
+        $url=$request['url'];
+        $url_explode=explode(".", $url);
+        $url_extension=$url_explode[count($url_explode)-1];
+        if($shop_name === null || $shop_name===""){
+            return redirect('/management')->with('messages', '店舗名がありません');
+        }elseif(mb_strlen($shop_name) > 50){
+            return redirect('/management')->with('messages', '店舗名は50文字以内にしてください');
+        }
+        if($genre === null || $genre === ""){
+            return redirect('/management')->with('messages', 'ジャンルがありません');
+        }elseif($genre !== "寿司" && $genre !== "焼肉" && $genre !== "イタリアン" && $genre !== "居酒屋" && $genre !== "ラーメン"){
+            return redirect('/management')->with('messages', 'ジャンルは「寿司」、「焼肉」、「イタリアン」、「居酒屋」、「ラーメン」のみ設定できます');
+        }
+        if($area === null || $area === ""){
+            return redirect('/management')->with('messages', 'エリアがありません');
+        }elseif($area !== "東京都" && $area !== "大阪府" && $area !== "福岡県"){
+            return redirect('/management')->with('messages', 'エリアは「東京都」、「大阪府」、「福岡県」のみ設定できます');
+        }
+        if($overview === null || $overview === ""){
+            return redirect('/management')->with('messages', '店舗概要がありません');
+        }elseif(mb_strlen($overview) > 400){
+            return redirect('/management')->with('messages', '店舗概要は400文字以内にしてください');
+        }
+        if($url === null || $url === ""){
+            return redirect('/management')->with('messages', '店舗画像のURLがありません');
+        }elseif($url_extension !== 'png' && $url_extension !== 'jpg' && $url_extension !== 'jpeg'){
+            return redirect('/management')->with('messages', 'ファイル拡張子は「jpg」、「png」のみです');
+        }
+
+        switch($genre){
+            case '寿司':
+                $genre_id = 1;
+                break;
+            case '焼肉':
+                $genre_id = 2;
+                break;
+            case 'イタリアン':
+                $genre_id = 3;
+                break;
+            case '居酒屋':
+                $genre_id = 4;
+                break;
+            case 'ラーメン':
+                $genre_id = 5;
+                break;
+        }
+
+        switch($area){
+            case '東京都':
+                $area_id = 1;
+                break;
+            case '大阪府':
+                $area_id = 2;
+                break;
+            case '福岡県':
+                $area_id = 3;
+                break;
+        }
+
+        Shop::create([
+            'shop_name' => $shop_name,
+            'user_id' => null,
+            'genre_id' => $genre_id,
+            'area_id' => $area_id,
+            'overview' => $overview,
+            'img' => $url,
+        ]);
+
+        return view('completion');
     }
 }

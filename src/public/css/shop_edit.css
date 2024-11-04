@@ -20,16 +20,20 @@
 }
 
 .edit-content__name,
+.edit-content__user,
 .edit-content__area,
-.edit-content__genre{
+.edit-content__genre,
+.edit-content__img{
     width: 80%;
     padding: 10px 20px;
     position: relative;
 }
 
 .edit-content__name-input,
+.edit-content__user-select,
 .edit-content__area-select,
-.edit-content__genre-select{
+.edit-content__genre-select,
+.edit-content__img-input{
     border: none;
     outline: none;
     padding: 5px 10px;
@@ -106,8 +110,10 @@
     }
 
     .edit-content__name,
+    .edit-content__user,
     .edit-content__area,
-    .edit-content__genre{
+    .edit-content__genre,
+    .edit-content__img{
         margin-bottom: 0;
         padding: 5px 20px;
         width: 50vw;
@@ -116,8 +122,10 @@
     }
 
     .edit-content__name-input,
+    .edit-content__user-select,
     .edit-content__area-select,
-    .edit-content__genre-select{
+    .edit-content__genre-select,
+    .edit-content__img-input{
         font-size: clamp(10px, 2vw, 12px);
     }
 

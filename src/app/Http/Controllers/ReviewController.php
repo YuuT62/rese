@@ -11,7 +11,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ReviewRequest;
 
-
 class ReviewController extends Controller
 {
     // 口コミ投稿ページ
@@ -80,6 +79,7 @@ class ReviewController extends Controller
         return view('review_list', compact('shop', 'reviews'));
     }
 
+    // 口コミ修正
     public function reviewEdit(Request $request){
         $user_id=Auth::id();
         $review=Review::with('shop')->find($request['review_id']);
@@ -89,7 +89,6 @@ class ReviewController extends Controller
         }else{
             return redirect('/');
         }
-
     }
 
     public function reviewUpdate(ReviewRequest $request){
