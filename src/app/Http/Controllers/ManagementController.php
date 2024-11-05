@@ -92,7 +92,7 @@ class ManagementController extends Controller
                 $path=Storage::disk('public')->putFile('shop-img', $request->file('img'));
                 $full_path = Storage::disk('public')->url($path);
         }else{
-            $full_path=null;
+            $full_path=Shop::find($shop_id)->img;
         }
         Shop::find($shop_id)->update([
             "shop_name" => $request['shop_name'],
@@ -202,27 +202,27 @@ class ManagementController extends Controller
         $url=$request['url'];
         $url_explode=explode(".", $url);
         $url_extension=$url_explode[count($url_explode)-1];
-        if($shop_name === null || $shop_name===""){
+        if($shop_name === null || empty(str_replace('　', '',$shop_name))){
             return redirect('/management')->with('messages', '店舗名がありません');
         }elseif(mb_strlen($shop_name) > 50){
             return redirect('/management')->with('messages', '店舗名は50文字以内にしてください');
         }
-        if($genre === null || $genre === ""){
+        if($genre === null || empty(str_replace('　', '',$genre))){
             return redirect('/management')->with('messages', 'ジャンルがありません');
         }elseif($genre !== "寿司" && $genre !== "焼肉" && $genre !== "イタリアン" && $genre !== "居酒屋" && $genre !== "ラーメン"){
             return redirect('/management')->with('messages', 'ジャンルは「寿司」、「焼肉」、「イタリアン」、「居酒屋」、「ラーメン」のみ設定できます');
         }
-        if($area === null || $area === ""){
+        if($area === null || empty(str_replace('　', '',$area))){
             return redirect('/management')->with('messages', 'エリアがありません');
         }elseif($area !== "東京都" && $area !== "大阪府" && $area !== "福岡県"){
             return redirect('/management')->with('messages', 'エリアは「東京都」、「大阪府」、「福岡県」のみ設定できます');
         }
-        if($overview === null || $overview === ""){
+        if($overview === null || empty(str_replace('　', '',$overview))){
             return redirect('/management')->with('messages', '店舗概要がありません');
         }elseif(mb_strlen($overview) > 400){
             return redirect('/management')->with('messages', '店舗概要は400文字以内にしてください');
         }
-        if($url === null || $url === ""){
+        if($url === null || empty(str_replace('　', '',$url))){
             return redirect('/management')->with('messages', '店舗画像のURLがありません');
         }elseif($url_extension !== 'png' && $url_extension !== 'jpg' && $url_extension !== 'jpeg'){
             return redirect('/management')->with('messages', 'ファイル拡張子は「jpg」、「png」のみです');

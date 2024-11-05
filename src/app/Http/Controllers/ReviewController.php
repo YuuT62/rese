@@ -49,7 +49,7 @@ class ReviewController extends Controller
                 "comment" => $request['comment'],
                 "review_img" => $full_path,
             ]);
-            return redirect('/detail/'.$shop_id);
+            return redirect('/detail/'.$shop_id)->with('messages', '口コミを投稿しました');
         }
     }
 
@@ -66,14 +66,14 @@ class ReviewController extends Controller
 
             return view('review_list', compact('shop', 'reviews'));
         }else{
-            return redirect('/detail/'.$shop_id);
+            return redirect('/detail/'.$shop_id)->with('messages', '口コミを削除しました');
         }
     }
 
     // 口コミ一覧
     public function reviewList(Request $request){
         $shop_id=$request['shop_id'];
-        $shop=Shop::find($shop_id)->first();
+        $shop=Shop::find($shop_id);
         $reviews=Review::ShopSearch($shop_id)->with('user')->get();
 
         return view('review_list', compact('shop', 'reviews'));
@@ -97,7 +97,7 @@ class ReviewController extends Controller
                 $path=Storage::disk('public')->putFile('review-img', $request->file('review_img'));
                 $full_path = Storage::disk('public')->url($path);
         }else{
-            $full_path=null;
+            $full_path=$review->review_img;
         }
         $review->update([
             "user_id" => $review->user_id,
@@ -107,6 +107,6 @@ class ReviewController extends Controller
             "review_img" => $full_path,
         ]);
 
-        return redirect('/detail/'.$review->shop_id);
+        return redirect('/detail/'.$review->shop_id)->with('messages', '口コミを修正しました');
     }
 }

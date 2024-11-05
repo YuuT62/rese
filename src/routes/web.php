@@ -41,8 +41,6 @@ Route::middleware('verified')->group(function () {
     Route::get('/credit/confirm',[QRController::class, 'confirm']);
     Route::get('/credit{amount}',[PaymentController::class, 'credit']);
     Route::post('/payment',[PaymentController::class, 'payment']);
-
-
     Route::get('/sort',[ShopController::class, 'sort']);
     Route::get('/review/list{shop_id}',[ReviewController::class, 'reviewList']);
 });
@@ -77,7 +75,7 @@ Route::group(['middleware' => ['auth','can:representative']], function () {
 Route::group(['middleware' => ['auth','can:user']], function () {
     Route::get('/review{shop_id}',[ReviewController::class, 'review']);
     Route::post('/review/send' ,[ReviewController::class, 'reviewSend']);
-    Route::post('review/delete',[ReviewController::class, 'reviewDelete']);
-    Route::get('review/edit',[ReviewController::class, 'reviewEdit']);
-    Route::post('review/update',[ReviewController::class, 'reviewUpdate']);
+    Route::post('/review/delete',[ReviewController::class, 'reviewDelete']);
+    Route::get('/review/edit',[ReviewController::class, 'reviewEdit']);
+    Route::post('/review/update',[ReviewController::class, 'reviewUpdate']);
 });

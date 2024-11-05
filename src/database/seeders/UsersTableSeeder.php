@@ -27,16 +27,16 @@ class UsersTableSeeder extends Seeder
         $param = [
             'role_id' => 2,
             'name' => 'テスト太郎',
-            'email' => 'test@example.com',
+            'email' => 'test1@example.com',
             'password' => bcrypt('P@ssw0rd'),
             'email_verified_at' => new DateTime('2024-01-01'),
         ];
         DB::table('users')->insert($param);
 
         $param = [
-            'role_id' => 3,
+            'role_id' => 2,
             'name' => 'テスト次郎',
-            'email' => 'test1@example.com',
+            'email' => 'test2@example.com',
             'password' => bcrypt('P@ssw0rd'),
             'email_verified_at' => new DateTime('2024-01-01'),
         ];
@@ -45,7 +45,16 @@ class UsersTableSeeder extends Seeder
         $param = [
             'role_id' => 3,
             'name' => 'テスト三郎',
-            'email' => 'test2@example.com',
+            'email' => 'test3@example.com',
+            'password' => bcrypt('P@ssw0rd'),
+            'email_verified_at' => new DateTime('2024-01-01'),
+        ];
+        DB::table('users')->insert($param);
+
+        $param = [
+            'role_id' => 3,
+            'name' => 'テスト四郎',
+            'email' => 'test4@example.com',
             'password' => bcrypt('P@ssw0rd'),
             'email_verified_at' => new DateTime('2024-01-01'),
         ];

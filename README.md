@@ -62,6 +62,15 @@ http://ec2-52-199-99-204.ap-northeast-1.compute.amazonaws.com
 
 ・決済機能（Stripeによる決済）
 
+
+##追加機能一覧（2024/11/5）
+
+・口コミ機能
+
+・ソート機能
+
+・CSVファイルによる新規店舗作成機能
+
 ##使用技術
 
 ・ PHP 8.1
@@ -113,7 +122,7 @@ composer install
   54行目）STRIPE_KEY="（Stripeアカウントの公開可能キー）"
 
   55行目）STRIPE_SECRET="（Stripeアカウントのシークレットキー）"
-  
+
 
 php artisan key:generate
 
@@ -153,3 +162,25 @@ https://1drv.ms/f/s!AoUAxOjhano5nh2gKN_zh_nR485o?e=5iKvzI
 ※Windowsの場合、ファイル権限エラーでアクセスできないことがあるため、以下のコマンドで回避
 
 sudo chmod -R 777 src/*
+
+##CSVファイル記載方法
+
+　記入例）
+    name,hoge
+
+    genre,寿司
+
+    area,東京都
+
+    overview,hogehoge
+
+    url,http://localhost/storage/shop-img/hoge.jpg
+
+  ※補足）
+  ・全ての入力項目が必須です。
+  ・nameは50文字以内で記載してください。
+  ・overviewは400文字以内で記載してください。
+  ・genreに指定できる値は「寿司」、「焼肉」、「イタリアン」、「居酒屋」、「ラーメン」のみです。
+  ・areaに指定できる値は「東京都」、「大阪府」、「福岡県」のみです。
+  ・ローカル環境の場合、「storage/shop-img」フォルダに設定する画像ファイルをアップロードしてから、urlに「http://localhost/storage/shop-img/｛ファイル名.拡張子｝」を記入してください。
+  ・画像の拡張子は「jpg」、「png」のみ指定できます。

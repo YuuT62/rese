@@ -17,7 +17,7 @@
         @csrf
         <input type="file" name="csv_file" id="csv" style="display:none" onchange="drop()">
         <label class="management-header__button-label"  for="csv" id="csvLabel">csvフィアルを選択</label>
-        <button class="management-header__button-submit management-header__button-submit--csv" type="submit">インポート</button>
+        <button class="management-header__button-submit management-header__button-submit--csv" type="submit">新規店舗作成</button>
         @error('csv_file')
             <div class="session">
             {{ $message }}

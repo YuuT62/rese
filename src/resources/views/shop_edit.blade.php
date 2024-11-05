@@ -33,6 +33,10 @@
                 <input class="edit-content__name-input" type="text" name="shop_name" value="{{ $shop->shop_name }}">
             </div>
 
+            @can('representative')
+            <input type="hidden" name="user_id" value="{{ $shop->user_id }}">
+            @endcan
+            @can('admin')
             <div class="edit-content__user">
                 <select class="edit-content__user-select" name="user_id">
                     <option value="" disabled selected>なし</option>
@@ -42,6 +46,7 @@
                 </select>
                 <img class="edit-content__select-icon" src="{{ asset('storage/icon/select_icon.png') }}" alt="select_icon">
             </div>
+            @endcan
 
             <div class="edit-content__area">
                 <select class="edit-content__area-select" name="area_id">
