@@ -84,6 +84,7 @@ http://ec2-13-231-44-57.ap-northeast-1.compute.amazonaws.com
 ![rese-table-1](https://github.com/user-attachments/assets/1915a13d-57e2-4e32-a8a1-6d6da2ab5000)
 ![rese-table-2](https://github.com/user-attachments/assets/c17b6944-cffa-46cd-b041-58d356b4a6a1)
 ![rese-table-3](https://github.com/user-attachments/assets/5169291e-9b20-4957-ace4-0e5c3e81d9a0)
+追加（2024/11/5）
 ![rese-table-4](https://github.com/user-attachments/assets/5dd45d0b-7f27-4885-8eaf-fcd8177b35ff)
 
 ##ER図
@@ -165,7 +166,7 @@ https://1drv.ms/f/s!AoUAxOjhano5nh2gKN_zh_nR485o?e=5iKvzI
 
 sudo chmod -R 777 src/*
 
-##CSVファイル記載方法
+##CSVファイル記載方法(追加 2024/11/5)
 
 　記入例）
     name,hoge
