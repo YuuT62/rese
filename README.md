@@ -150,6 +150,11 @@ https://1drv.ms/f/s!AoUAxOjhano5nh2gKN_zh_nR485o?e=5iKvzI
 
 ・rese/src/storage/app/public
 
+以下のフォルダを"rese/src/storage/app/public"に作成してください。
+
+　review-img
+
+
 ##mysql
 
 　アクセスURL：http://localhost:8080/
