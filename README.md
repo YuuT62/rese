@@ -28,7 +28,7 @@ http://ec2-13-231-44-57.ap-northeast-1.compute.amazonaws.com
 
 ・ユーザー飲食店予約情報取得
 
-。飲食店一覧取得
+・飲食店一覧取得
 
 ・飲食店詳細取得
 
@@ -36,7 +36,7 @@ http://ec2-13-231-44-57.ap-northeast-1.compute.amazonaws.com
 
 ・飲食店お気に入り削除
 
-。飲食店予約情報追加
+・飲食店予約情報追加
 
 ・飲食店予約情報削除
 
