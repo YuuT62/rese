@@ -17,7 +17,7 @@ class ReviewsTableSeeder extends Seeder
         $param =[
             "user_id" => 4,
             "shop_id" => 1,
-            "score" => 1,
+            "score" => 3,
             "comment" => "テストコメント、テストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメント",
             "review_img" => null,
         ];
@@ -26,7 +26,7 @@ class ReviewsTableSeeder extends Seeder
         $param =[
             "user_id" => 5,
             "shop_id" => 1,
-            "score" => 1,
+            "score" => 3,
             "comment" => "テストコメント、テストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメント",
             "review_img" => null,
         ];
@@ -53,7 +53,7 @@ class ReviewsTableSeeder extends Seeder
         $param =[
             "user_id" => 4,
             "shop_id" => 3,
-            "score" => 4,
+            "score" => 5,
             "comment" => "テストコメント、テストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメント",
             "review_img" => null,
         ];
@@ -62,7 +62,7 @@ class ReviewsTableSeeder extends Seeder
         $param =[
             "user_id" => 5,
             "shop_id" => 3,
-            "score" => 3,
+            "score" => 5,
             "comment" => "テストコメント、テストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメント",
             "review_img" => null,
         ];
@@ -71,7 +71,7 @@ class ReviewsTableSeeder extends Seeder
         $param =[
             "user_id" => 4,
             "shop_id" => 4,
-            "score" => 4,
+            "score" => 3,
             "comment" => "テストコメント、テストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメントテストコメント",
             "review_img" => null,
         ];
