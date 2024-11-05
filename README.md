@@ -170,11 +170,9 @@ sudo chmod -R 777 src/*
 ##CSVファイル記載方法（追加　2024/11/5）
 
 　記入例）
-    name,hoge
-    genre,寿司
-    area,東京都
-    overview,hogehoge
-    url,http://localhost/storage/shop-img/hoge.jpg
+ 
+ 　　　![csv_example](https://github.com/user-attachments/assets/d9c88dc9-3b56-4f0c-a913-8465ff27b13e)
+
 
   ※補足）
   ・全ての入力項目が必須です。
