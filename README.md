@@ -4,15 +4,18 @@
 
 ![reseトップ画面](https://github.com/user-attachments/assets/05f415bb-8f30-483d-8658-fcfc8abb77eb)
 
+
 ##作成した目的
 
 外部の飲食店予約サービスは手数料を取られるので自社で予約サービスを持ちたい。(実践学習ターム)
 
-#アプリケーションのURL
+
+##アプリケーションのURL
 
 http://ec2-13-231-44-57.ap-northeast-1.compute.amazonaws.com
 
 ※メール認証機能はAWSの「Amazon Simple Email Service」を使用しており、本稼働アクセスのリクエスト未実施（サンドボックス状態）のため、認証されたメールアドレス以外は登録できない状態です。
+
 
 ##機能一覧
 
@@ -71,6 +74,7 @@ http://ec2-13-231-44-57.ap-northeast-1.compute.amazonaws.com
 
 ・CSVファイルによる新規店舗作成機能
 
+
 ##使用技術
 
 ・ PHP 8.1
@@ -78,6 +82,7 @@ http://ec2-13-231-44-57.ap-northeast-1.compute.amazonaws.com
 ・ Laravel 8.83.27
 
 ・ MySQL 8.0.26
+
 
 ##テーブル設計
 
@@ -87,6 +92,7 @@ http://ec2-13-231-44-57.ap-northeast-1.compute.amazonaws.com
 
 追加（2024/11/5）
 ![rese-table-4](https://github.com/user-attachments/assets/5dd45d0b-7f27-4885-8eaf-fcd8177b35ff)
+
 
 ##ER図（修正　2024/11/5）
 
@@ -102,6 +108,7 @@ cd rese/
 docker-compose up -d --build
 
 *MySQLは、OSによって起動しない場合があるので、それぞれのPCに合わせてdocker-compose.ymlファイルを編集してください。
+
 
 ##Laravel環境構築
 
@@ -155,11 +162,13 @@ https://1drv.ms/f/s!AoUAxOjhano5nh2gKN_zh_nR485o?e=5iKvzI
 
 　アクセスURL：http://localhost:8080/
 
+
 ##MailCatcher
 
 　アクセスURL：http://localhost:1080/
 
 　※テスト用のメール受取ボックス（新規ユーザー作成時の認証メールが上記URL先のメールボックスで受け取られます）
+
 
 ##リマインダー機能について
 環境構築時に自動で起動させているため、追加操作はありません。（予約当日AM9:00に予約者へリマインダーメールを送信）
@@ -167,6 +176,7 @@ https://1drv.ms/f/s!AoUAxOjhano5nh2gKN_zh_nR485o?e=5iKvzI
 ※Windowsの場合、ファイル権限エラーでアクセスできないことがあるため、以下のコマンドで回避
 
 sudo chmod -R 777 src/*
+
 
 ##CSVファイル記載方法（追加　2024/11/5）
 
