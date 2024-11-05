@@ -10,7 +10,7 @@
 
 #アプリケーションのURL
 
-http://ec2-52-199-99-204.ap-northeast-1.compute.amazonaws.com
+http://ec2-13-231-44-57.ap-northeast-1.compute.amazonaws.com
 
 ※メール認証機能はAWSの「Amazon Simple Email Service」を使用しており、本稼働アクセスのリクエスト未実施（サンドボックス状態）のため、認証されたメールアドレス以外は登録できない状態です。
 
@@ -84,10 +84,12 @@ http://ec2-52-199-99-204.ap-northeast-1.compute.amazonaws.com
 ![rese-table-1](https://github.com/user-attachments/assets/1915a13d-57e2-4e32-a8a1-6d6da2ab5000)
 ![rese-table-2](https://github.com/user-attachments/assets/c17b6944-cffa-46cd-b041-58d356b4a6a1)
 ![rese-table-3](https://github.com/user-attachments/assets/5169291e-9b20-4957-ace4-0e5c3e81d9a0)
+![rese-table-4](https://github.com/user-attachments/assets/5dd45d0b-7f27-4885-8eaf-fcd8177b35ff)
 
 ##ER図
 
-![index](https://github.com/user-attachments/assets/1ee15fcb-9d4e-48d3-9577-e7136ad8629c)
+![index](https://github.com/user-attachments/assets/46a30a28-dcb1-4edc-b964-be287243c1dc)
+
 
 ##環境構築
 
@@ -167,20 +169,22 @@ sudo chmod -R 777 src/*
 
 　記入例）
     name,hoge
-
     genre,寿司
-
     area,東京都
-
     overview,hogehoge
-
     url,http://localhost/storage/shop-img/hoge.jpg
 
   ※補足）
   ・全ての入力項目が必須です。
+  
   ・nameは50文字以内で記載してください。
+  
   ・overviewは400文字以内で記載してください。
+  
   ・genreに指定できる値は「寿司」、「焼肉」、「イタリアン」、「居酒屋」、「ラーメン」のみです。
+  
   ・areaに指定できる値は「東京都」、「大阪府」、「福岡県」のみです。
+  
   ・ローカル環境の場合、「storage/shop-img」フォルダに設定する画像ファイルをアップロードしてから、urlに「http://localhost/storage/shop-img/｛ファイル名.拡張子｝」を記入してください。
+  
   ・画像の拡張子は「jpg」、「png」のみ指定できます。
