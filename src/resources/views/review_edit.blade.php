@@ -133,7 +133,6 @@
     textarea.addEventListener("input", () => {
     currentLength = textarea.value.length
     charCounter.textContent = `${currentLength}`
-
     if (currentLength > maxLength) {
         charCounter.style.color = "red"
     } else {
@@ -173,5 +172,4 @@
         });
     });
 </script>
-
 @endsection
